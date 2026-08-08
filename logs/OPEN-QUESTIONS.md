@@ -61,7 +61,7 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 | OQ-0047 | P1 | OPEN | Weak-models-degrade-debate is the competing explanation to isolate |
 | OQ-0048 | P0 | OPEN | Modal credits expired — compute plan in DR-0005 is unfunded |
 | OQ-0049 | P1 | OPEN | Marginal vs conditional estimand — SESOI must be stated on the reported scale |
-| OQ-0040 | P1 | OPEN | Provider acceptable-use policies not checked for misinformation clauses |
+| OQ-0040 | P1 | **LARGELY DISSOLVED** | Apache-2.0/MIT pool has no acceptable-use restrictions; see MODEL-POOL.md §3 |
 | OQ-0041 | P0 | CLOSED (DR-0005) | Fork resolved: self-host small open weights on Modal |
 
 ---
@@ -1118,3 +1118,25 @@ two different things — and a null result would be claimed against the wrong be
 3. When `statsmodels`/`lifelines` are available, fit the frailty model as a secondary analysis
    and report both. If they disagree by more than the ~3% seen in `EXP-A01`, that is a finding
    about the data, not a technicality.
+
+
+---
+
+### OQ-0040 update, 2026-08-07 — largely dissolved by the model-pool choice
+
+The question was whether providers' acceptable-use policies prohibit generating
+misinformation. Under `DR-0005` we self-host, so the binding terms are the **model licences**,
+not provider APIs.
+
+`MODEL-POOL.md` selects four families that are all **Apache-2.0 and ungated**
+(Qwen2.5-7B, Mistral-7B-v0.3, OLMo-2-7B, Granite-3.3-8B). Apache-2.0 imposes **no use
+restrictions**, so the question does not arise for the pool we will actually run.
+
+Llama and Gemma are excluded partly for this reason. Note the specific finding: attempting to
+read the Llama 3.1 acceptable-use policy returned `HTTP 401 — Access to model … is restricted`.
+**The terms governing use are themselves behind the gate.** Accepting unread terms for a study
+whose method is generating false factual claims is not defensible, and avoiding it costs
+nothing here.
+
+Residual, still open: if any hosted API is used for a supplementary comparison, that
+provider's AUP must be read first.

@@ -73,7 +73,7 @@ which rows are blocked on money and which are not. **13 of 18 rows need no GPU a
 | C1 | 25–30 candidate facts curated across tiers | `fact-suite/candidates.json` — 31 items | ❌ | — | ☑ |
 | C2 | Fact-suite inclusion band preregistered **before** validation | `fact-suite/README.md` §2 — band fixed at [0.25, 0.85] | ❌ | — | ☑ |
 | C3 | Facts validated against isolated accuracy; out-of-band items excluded by rule | `EXP-000` | ❌ | 🖥️ | ☐ |
-| C4 | Candidate model pool confirmed served, licence-checked, and downloadable | `[UNVERIFIED]` | ❌ | — | ☐ |
+| C4 | Candidate model pool confirmed served, licence-checked, and downloadable | `MODEL-POOL.md` — 4 families, Apache-2.0, ungated | ❌ | — | ☑ |
 | C5 | Prompt templates versioned and **byte-identical across agents** | `OQ-0046` | ❌ | — | ☐ |
 
 > **C2 before C3, and the order is the point.** The inclusion band must be fixed before the
