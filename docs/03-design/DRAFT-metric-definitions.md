@@ -1,11 +1,33 @@
 ---
 id: DRAFT-metrics
 title: Formal definitions for TRR, MP, BPI, I∞ and R
-status: DRAFT — decisions required
+status: SUPERSEDED by AMD-0002 (2026-08-07)
 version: 0.1
 created: 2026-08-07
-closes: OQ-0003 (partially), OQ-0010
+superseded_by: AMD-0002-outcome-metrics-and-analysis-plan.md
 ---
+
+> # ⚠ SUPERSEDED — retained as historical record only
+>
+> **Replaced by [`AMD-0002`](AMD-0002-outcome-metrics-and-analysis-plan.md) on 2026-08-07.**
+> Do not use these definitions. Retained per SOP-010 §2 — superseded documents are marked,
+> never deleted.
+>
+> **Why it was superseded.** This draft assumed a **graded credence** dependent variable in
+> [0,1] and framed outcomes as means over it. Two decisions invalidated that premise:
+>
+> - `OQ-0038` — 7–9B models respond to counter-arguments **binarily**, so a graded credence
+>   would have measured probe noise for most agents. AMD-0001 §8 moved the DV to a discrete
+>   state.
+> - `DR-0008` — the contribution reframed to **multi-round cascade dynamics**, making the
+>   primary outcomes tail and dynamic quantities rather than means.
+>
+> Of the seven decisions this draft raised, D2 (thresholds) and D4 (bimodality via dip test)
+> **dissolved** rather than resolved — thresholds do not exist on a discrete state, and
+> bimodality is meaningless for a two-valued variable. See AMD-0002 §9 for the full disposition.
+>
+> One idea from this draft survived intact and became load-bearing: **D1, probing the true and
+> false claims separately.** It is now the 2×2 state space in AMD-0002 §1.
 
 # Draft: formal metric definitions
 

@@ -14,16 +14,16 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 
 | ID | P | Status | Question |
 |---|---|---|---|
-| OQ-0001 | P0 | IN PROGRESS | Is the core contribution already published? |
+| OQ-0001 | P0 | **CLOSED** | Yes — positioning statement v1.0 FINAL written (PRIOR-ART-REVIEW) |
 | OQ-0002 | P0 | CLOSED (DR-0005) | Logit probe measured the wrong model — dissolved by self-hosting |
-| OQ-0003 | P0 | OPEN | Primary metrics (TRR, MP, BPI, I∞, R₀) are never formally defined |
+| OQ-0003 | P0 | **CLOSED (AMD-0002)** | All outcomes formally defined on the discrete state |
 | OQ-0004 | P0 | CLOSED (DR-0006) | H4 had no experimental factor — H4 dropped to Future Work |
 | OQ-0005 | P0 | CLOSED (AMD-0001 §3,§5) | H(Θ) redefined as error-decorrelation and measured; 5-level ladder |
-| OQ-0006 | P0 | OPEN | Pseudoreplication: agents nested in runs treated as independent |
+| OQ-0006 | P0 | **CLOSED (AMD-0002 §8.1)** | Run-level frailty for agent outcomes; run-level analysis for cascades |
 | OQ-0007 | P0 | OPEN | API call volume appears under-counted by ~3–4× |
 | OQ-0008 | P1 | CLOSED (AMD-0001 §4) | Capability matching is now the design's central control |
 | OQ-0009 | P1 | CLOSED (AMD-0001 §8) | α dissolved — the two probes are reported separately, not mixed |
-| OQ-0010 | P1 | OPEN | H2's test (K–S) does not test the claim (bimodality) |
+| OQ-0010 | P1 | **CLOSED (AMD-0002 §6)** | Restated as state assortativity — tests the echo-chamber claim directly |
 | OQ-0011 | P1 | CLOSED (AMD-0001 §2) | H3 converted from regression to manipulation |
 | OQ-0012 | P1 | OPEN | Budget is internally inconsistent and appears to exceed the cap |
 | OQ-0013 | P1 | CLOSED (DR-0005) | Free-tier calls infeasible and ToS-conflicted — substrate changed |
@@ -40,15 +40,15 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 | OQ-0024 | P2 | OPEN | No non-LLM baseline (classical contagion model) for comparison |
 | OQ-0025 | P3 | OPEN | Does "diversity" mean model family, or something measurable and continuous? |
 | OQ-0026 | P0 | CLOSED (AMD-0001 §6) | Isolated + no-injection arms are now first-class conditions |
-| OQ-0027 | P0 | CLOSED (AMD-0001 §7) | Truth-diffusion metric added alongside error metrics |
+| OQ-0027 | P0 | CLOSED (AMD-0002 §2.3) | Truth-acquisition hazard defined; Δλ net epistemic flow |
 | OQ-0028 | P1 | OPEN | Graph density not matched across topologies |
 | OQ-0029 | P1 | CLOSED (AMD-0001 §2) | Direction pre-committed: truth retention, not slower convergence |
 | OQ-0030 | P1 | CLOSED-ISH | Do seven unverified 2025–2026 leads pre-empt H1/H2/H4? → all real, none fatal |
-| OQ-0031 | P0 | OPEN | Communication-budget convention unspecified — topology effect may be an artefact |
+| OQ-0031 | P0 | **CLOSED (AMD-0002 §7)** | Fixed per-receiver budget as primary; per-edge as sensitivity |
 | OQ-0032 | P1 | OPEN | N=20 may be too small; a 2026 precedent runs N=200 |
 | OQ-0033 | P1 | OPEN | H2 predicts the opposite sign to a published small-world result |
 | OQ-0034 | P1 | OPEN | Seeding is one-shot here, per-round elsewhere — not comparable |
-| OQ-0035 | P2 | OPEN | ρ notation collides with the spectral-radius ρ in prior work |
+| OQ-0035 | P2 | **CLOSED (AMD-0002 §1)** | Seeding density renamed σ |
 | OQ-0036 | P2 | OPEN | Should we adopt or benchmark against existing published DVs? |
 | OQ-0037 | P1 | PARTLY CLOSED | Newly surfaced leads — 2 fetched and real, 3 still unverified |
 | OQ-0038 | P0 | RESOLVED → DV change | 7–9B models ARE binary; DV moves to discrete state + survival analysis |

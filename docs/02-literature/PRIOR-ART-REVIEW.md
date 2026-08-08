@@ -736,3 +736,81 @@ IDs unknown; surfaced from search snippets only:
 
 That is a real contribution with a real disagreement behind it, and it is defensible against
 every paper found so far.
+
+---
+
+# Positioning statement — v1.0 FINAL
+
+**Supersedes drafts v0.1 and v0.2 above.** Written per SOP-020 §6, after nine leads verified
+against primary sources and one threatening citation traced to the wrong paper entirely
+(`LIT-0002`). Closes `OQ-0001`.
+
+## The one-paragraph version
+
+> Four 2025–26 studies report effects of model heterogeneity in multi-agent LLM systems, and
+> they disagree: positive on factual retention (Wan et al., `2606.03032`), positive on
+> preserving disagreement (Sela, `2604.26561`), negative on consensus quality (Han et al.,
+> `2601.05606`), and protective under adversarial peers (Nilayam et al., `2606.19826`).
+> **None holds capability fixed**, so none separates diversity from competence. Nilayam et al.
+> measure a single revision step, setting later rounds aside because *"later rounds compound
+> direct peer influence with path dependence"*; Sela independently identifies capitulation
+> cascades and designs to avoid them. We ask whether the published single-step protection
+> survives **multi-round cascade propagation at matched capability** — using a five-level
+> diversity ladder that separates architectural decorrelation from stochastic and persona
+> decorrelation, and reporting truth diffusion alongside error diffusion so that resistance is
+> distinguished from suppression.
+
+*(138 words.)*
+
+## The four claims it rests on, and their evidence
+
+| Claim | Evidence | Status |
+|---|---|---|
+| The generic phenomenon is published | Ju et al. (Sci. China Inf. Sci. 69:172103); Becker et al. (`2606.16710`); NetSafe (Findings ACL 2025); Shen et al. (EMNLP 2025); Li et al. (`2410.13909`) | Verified — we claim none of it |
+| Every published heterogeneity result is capability-confounded | Wan §5.4 same-series arm contains GPT-3.5-turbo; Han sweeps a GPT-3.5:GPT-4o *capability* ratio; Sela's 7–9B pool is slot-matched not accuracy-matched; Nilayam et al. slot-matched | Verified from primary sources |
+| Multi-round cascade dynamics are explicitly set aside | Nilayam et al. verbatim on path dependence; Sela verbatim on capitulation cascades as a hazard to design around | Verified — **two independent groups named it as the thing they avoided** |
+| Truth diffusion is never reported alongside error diffusion | Shen et al. measured a 10.5% beneficial-insight gap and concluded the optimum is at *moderate* sparsity; no misinformation-propagation paper reports both sides | Verified |
+
+## What we explicitly do not claim
+
+Stated here so it stays stated, and so no draft of the paper quietly recovers a stronger claim:
+
+- **Not** that misinformation spreads through LLM agent networks — published, at least twice.
+- **Not** that topology modulates it — published, at least three times.
+- **Not** that heterogeneity helps under adversarial peers at one step — Nilayam et al.,
+  June 2026. **We replicate this as our baseline and build on it.**
+- **Not** that we are first to cross topology with model heterogeneity — Han et al., Jan 2026.
+- **Not** that diversity is architectural. The ladder exists precisely because we do not know,
+  and finding that cheap decorrelation (sampling, personas) works as well as architectural
+  diversity would be the *more useful* result.
+
+## Why this survives the obvious attack
+
+A reviewer's strongest move is: *"heterogeneity-as-defence is already published; what is new?"*
+The answer has to be sharper than "we did it bigger", and it is:
+
+1. **The confound is real and shared by all four.** Mixed-family cohorts differ from
+   homogeneous ones in capability spread as well as in diversity. Prior work varies both at
+   once. Holding `ā` fixed by construction (AMD-0001 §4) is not a refinement — it changes what
+   the claim means, and it also breaks the known collinearity between diversity statistics and
+   mean accuracy, which makes `H(c)` interpretable for the first time.
+2. **One step is not a cascade.** The published protective effect is measured at R0→R1. Cascade
+   behaviour is a *dynamic* phenomenon; a single-step effect can reverse, saturate, or amplify
+   over rounds, and nobody has looked. Both groups that came closest said, in print, that this
+   is what they were avoiding.
+3. **The ladder answers a question binary designs cannot pose.** Every prior study is one
+   homogeneous configuration vs one heterogeneous configuration, which cannot distinguish
+   "architectural diversity protects" from "any decorrelation protects".
+4. **The martingale gives the control arm a theoretical prediction** (`OQ-0043`, `[UNVERIFIED]`)
+   rather than a merely descriptive baseline — rare in this literature.
+
+## If H1 comes back null
+
+Pre-committed under `DR-0004`, and worth writing here because this is the framing that must
+survive an inconvenient result: a null on H1 means **published single-step heterogeneity
+protection does not survive multi-round propagation once capability is controlled.** Given that
+two groups avoided multi-round dynamics and four failed to control capability, that is a more
+useful finding than a confirmation, and it is publishable on exactly the same design.
+
+**Shelf life.** Becker et al. appeared eight weeks before this review; Nilayam et al. seven.
+Re-run the Tier-A sweep at G3 and again immediately before submission (SOP-020 §5).

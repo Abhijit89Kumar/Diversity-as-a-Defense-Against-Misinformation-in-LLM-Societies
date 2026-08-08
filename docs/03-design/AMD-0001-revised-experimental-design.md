@@ -296,13 +296,17 @@ Per SOP-030 §4, these are set by the power analysis and the pilot, **not chosen
 
 ## 10. Before G1 can close
 
-- [ ] Read `2604.26561` in full → `OQ-0039`
-- [ ] Gradedness pre-check → `OQ-0038`
-- [ ] Fact-suite validation with a preregistered inclusion band → `OQ-0017`
-- [ ] Candidate model pool confirmed available and licence-checked `[UNVERIFIED]`
-- [ ] `H(c)` computed for every planned cohort → `OQ-0005`
-- [ ] Communication-budget convention fixed → `OQ-0031`
-- [ ] Metric formulae frozen, D1–D7 in `DRAFT-metric-definitions.md` decided → `OQ-0003`
-- [ ] Token/timing pilot → rebuild budget from measurements → `OQ-0007`, `OQ-0014`
-- [ ] Power analysis → replication count and N
-- [ ] Positioning statement final → `OQ-0001`
+> **Superseded 2026-08-07 by [`G1-GATE-CHECKLIST.md`](G1-GATE-CHECKLIST.md)**, which carries
+> the full 18-row checklist with evidence requirements, blocking status, GPU dependency, and a
+> sign-off block. This list is retained as the historical record of what was known at the time.
+
+- [x] Read `2604.26561` in full → `OQ-0039` — done; traced onward to `LIT-0002`, threat dissolved
+- [ ] Gradedness pre-check → `OQ-0038` (checklist B6 — needs GPU)
+- [ ] Fact-suite validation with a preregistered inclusion band → `OQ-0017` (C2, C3)
+- [ ] Candidate model pool confirmed available and licence-checked `[UNVERIFIED]` (C4)
+- [ ] `H(c)` computed for every planned cohort → `OQ-0005` (D2)
+- [x] Communication-budget convention fixed → `OQ-0031` — AMD-0002 §7, fixed per-receiver budget
+- [x] Metric formulae frozen → `OQ-0003` — AMD-0002; D1–D7 disposition at AMD-0002 §9
+- [ ] Token/timing pilot → rebuild budget from measurements → `OQ-0007`, `OQ-0014` (E1)
+- [ ] Power analysis → replication count and N (E2)
+- [x] Positioning statement final → `OQ-0001` — `PRIOR-ART-REVIEW.md` → v1.0 FINAL
