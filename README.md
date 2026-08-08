@@ -19,10 +19,11 @@ misinformation better than a scale-matched homogeneous population.
 |---|---|
 | **Phase** | G1 — design freeze in progress |
 | **Last updated** | 2026-08-07 |
-| **Design of record** | [AMD-0001](docs/03-design/AMD-0001-revised-experimental-design.md) — supersedes the v1.0 hypotheses, architecture and cohort design |
-| **Blocking** | G1 checklist — [AMD-0001 §10](docs/03-design/AMD-0001-revised-experimental-design.md). Highest priority: read `arXiv:2604.26561`, then the belief-gradedness pre-check. |
-| **Code** | Not started. Engineering is gated on G1 per [DR-0003](logs/DECISION-REGISTER.md). |
-| **Timeline** | No committed date. G1 is held until its evidence requirements are met ([DR-0007](logs/DECISION-REGISTER.md)). |
+| **Design of record** | [AMD-0001](docs/03-design/AMD-0001-revised-experimental-design.md) (design) · [AMD-0002](docs/03-design/AMD-0002-outcome-metrics-and-analysis-plan.md) (metrics & analysis) |
+| **Gate status** | [G1 checklist](docs/03-design/G1-GATE-CHECKLIST.md) — 10 of 18 rows closed. **Blocked on work, not money**: 5 remaining rows need GPU, all satisfied by one ~$5 pilot |
+| **Code** | Analysis core built and tested — 25 tests passing. Simulation engine next. |
+| **Compute** | Unfunded ([DR-0009](logs/DECISION-REGISTER.md)). All work to date is GPU-free. |
+| **Timeline** | No committed date. The gate is held, not the date ([DR-0007](logs/DECISION-REGISTER.md)). |
 
 Progress is tracked in [logs/RESEARCH-LOG.md](logs/RESEARCH-LOG.md). Read the most
 recent entry first.
@@ -45,6 +46,19 @@ Three things were established in the first review and changed the plan substanti
 The response: self-host small open weights ([DR-0005](logs/DECISION-REGISTER.md)), lead with
 capability-matched diversity ([DR-0006](logs/DECISION-REGISTER.md)), and hold the gate rather
 than the date ([DR-0007](logs/DECISION-REGISTER.md)).
+
+Since then the question sharpened again. Two papers prove multi-agent debate is a
+**martingale on belief in the correct answer** — *under homogeneous agents*. Our design
+violates that condition by construction, so H1 became a well-posed theoretical question with
+a proved null: **does architectural heterogeneity break the martingale, and does it break
+toward truth when an adversary is present?** ([DR-0008](logs/DECISION-REGISTER.md),
+[OQ-0050](logs/OPEN-QUESTIONS.md).)
+
+Two validation experiments are complete, both with no compute:
+[EXP-A01](experiments/EXP-A01/RESULTS.md) shows the analysis pipeline does not manufacture
+significance — and that with naive standard errors the false-positive rate would **double**.
+[EXP-A02](experiments/EXP-A02/RESULTS.md) fixes the design at 200 runs, N=20, and shows the
+originally proposed smallest-effect-of-interest was unreachable at any feasible scale.
 
 ---
 
