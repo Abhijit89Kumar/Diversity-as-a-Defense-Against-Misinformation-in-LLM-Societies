@@ -1,0 +1,74 @@
+{
+  "_comment": [
+    "The diversity ladder (AMD-0001 §3). Five cohort definitions, all to be matched on measured",
+    "isolated accuracy ā once EXP-000 provides it (AMD-0001 §4).",
+    "",
+    "measured_accuracy and measured_diversity are deliberately null. They are MEASUREMENTS, not",
+    "settings, and confirmatory runs must refuse to start without them — a cohort whose capability",
+    "is asserted rather than measured is exactly the flaw this project criticises in prior work.",
+    "",
+    "Model revisions are null pending EXP-000. Before any confirmatory run they must carry exact",
+    "commit SHAs: 'Qwen2.5-7B-Instruct' is not a reproducible identifier (SOP-040 §5).",
+    "",
+    "Note D0-D2 all use ONE served model, so three of five rungs cost almost nothing extra to run."
+  ],
+  "version": "0.1",
+  "cohorts": [
+    {
+      "name": "D0-identical",
+      "level": "D0",
+      "members": [
+        {"model_id": "Qwen/Qwen2.5-7B-Instruct", "revision": null, "backend": "vllm", "temperature": 0.0}
+      ],
+      "personas": ["analyst"],
+      "measured_accuracy": null,
+      "measured_diversity": null
+    },
+    {
+      "name": "D1-stochastic",
+      "level": "D1",
+      "members": [
+        {"model_id": "Qwen/Qwen2.5-7B-Instruct", "revision": null, "backend": "vllm", "temperature": 0.7}
+      ],
+      "personas": ["analyst"],
+      "measured_accuracy": null,
+      "measured_diversity": null
+    },
+    {
+      "name": "D2-persona",
+      "level": "D2",
+      "members": [
+        {"model_id": "Qwen/Qwen2.5-7B-Instruct", "revision": null, "backend": "vllm", "temperature": 0.7}
+      ],
+      "personas": ["analyst", "empiricist", "sceptic", "synthesiser"],
+      "measured_accuracy": null,
+      "measured_diversity": null
+    },
+    {
+      "name": "D3-architectural",
+      "level": "D3",
+      "members": [
+        {"model_id": "Qwen/Qwen2.5-7B-Instruct", "revision": null, "backend": "vllm", "temperature": 0.7},
+        {"model_id": "mistralai/Mistral-7B-Instruct-v0.3", "revision": null, "backend": "vllm", "temperature": 0.7},
+        {"model_id": "allenai/OLMo-2-1124-7B-Instruct", "revision": null, "backend": "vllm", "temperature": 0.7},
+        {"model_id": "ibm-granite/granite-3.3-8b-instruct", "revision": null, "backend": "vllm", "temperature": 0.7}
+      ],
+      "personas": ["analyst"],
+      "measured_accuracy": null,
+      "measured_diversity": null
+    },
+    {
+      "name": "D4-combined",
+      "level": "D4",
+      "members": [
+        {"model_id": "Qwen/Qwen2.5-7B-Instruct", "revision": null, "backend": "vllm", "temperature": 0.7},
+        {"model_id": "mistralai/Mistral-7B-Instruct-v0.3", "revision": null, "backend": "vllm", "temperature": 0.7},
+        {"model_id": "allenai/OLMo-2-1124-7B-Instruct", "revision": null, "backend": "vllm", "temperature": 0.7},
+        {"model_id": "ibm-granite/granite-3.3-8b-instruct", "revision": null, "backend": "vllm", "temperature": 0.7}
+      ],
+      "personas": ["analyst", "empiricist", "sceptic", "synthesiser"],
+      "measured_accuracy": null,
+      "measured_diversity": null
+    }
+  ]
+}
