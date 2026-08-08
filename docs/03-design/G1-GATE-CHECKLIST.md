@@ -58,7 +58,7 @@ which rows are blocked on money and which are not. **13 of 18 rows need no GPU a
 | B5 | Construct-validity argument for the belief instrument | `CONSTRUCT-VALIDITY-BELIEF-METRIC.md` — argument complete, evidence V1–V7 pending | ❌ | — | ◐ |
 | B6 | **State-discreteness verified in our models, on our task** | Pilot `EXP-000` | ❌ | 🖥️ | ☐ |
 | B7 | Confound register: every confound controlled / measured / acknowledged | AMD-0001 §4, `OQ-0046` | ❌ | — | ◐ |
-| B8 | SESOI justified, not asserted | AMD-0002 §8.4 | ❌ | — | ☐ |
+| B8 | SESOI justified, not asserted | `EXP-A02` §5 — HR 0.67, derived from power + published effect sizes | ❌ | — | ☑ |
 
 > **B6 is the one genuinely irreducible GPU dependency in the design.** The entire DV rests on
 > Sela's finding that 7–9B models respond binarily — one paper, one task domain, seven models.
@@ -96,7 +96,7 @@ which rows are blocked on money and which are not. **13 of 18 rows need no GPU a
 | # | Requirement | Evidence | Block | GPU | Status |
 |---|---|---|---|---|---|
 | E1 | Token/timing measured; budget rebuilt from measurement not assumption | `EXP-000`, `OQ-0007` | ❌ | 🖥️ | ☐ |
-| E2 | Power analysis → N, replications, T | Needs E1 variance | ❌ | — | ☐ |
+| E2 | Power analysis → N, replications, T | `EXP-A02` — 200 runs, N=20, T by science. Re-run after EXP-000 | ❌ | — | ◐ |
 | E3 | Analysis pipeline passes a **planted-effect synthetic-data test** | `EXP-A01` | ❌ | — | ☑ |
 | E4 | Every metric unit-tested on hand-constructed trajectories | `tests/test_metrics.py`, 22 tests | ❌ | — | ☑ |
 | E5 | Capitulation frequent enough for hazard modelling; else Firth fallback | AMD-0002 §8.5 | ⚠️ | 🖥️ | ☐ |

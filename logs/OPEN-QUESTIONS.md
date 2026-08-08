@@ -28,11 +28,11 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 | OQ-0012 | P1 | OPEN | Budget is internally inconsistent and appears to exceed the cap |
 | OQ-0013 | P1 | CLOSED (DR-0005) | Free-tier calls infeasible and ToS-conflicted — substrate changed |
 | OQ-0014 | P1 | CLOSED (DR-0006) | 70B arm removed; capability-matching replaces scale-matching |
-| OQ-0015 | P1 | OPEN | T = 5 rounds — is the system anywhere near the asymptote H1/H4 assume? |
+| OQ-0015 | P1 | **REFRAMED (EXP-A02 §4.2)** | T is power-neutral, so set by cascade onset alone; measured in EXP-000 |
 | OQ-0016 | P1 | OPEN | Error-placeholder strings enter agent contexts as if they were messages |
 | OQ-0017 | P1 | **PARTLY CLOSED** | 31 candidates curated, construct split, band preregistered; validation pending EXP-000 |
 | OQ-0018 | P1 | CLOSED (DR-0005) | Three of four named models dead or dying — self-hosted weights instead |
-| OQ-0019 | P1 | OPEN | Replication count (3 seeds) has no power justification |
+| OQ-0019 | P1 | **CLOSED (EXP-A02)** | 200 runs for the H1 contrast, derived from simulated power |
 | OQ-0020 | P2 | IN PROGRESS | Prolific/MTurk pay compliance and true annotation cost |
 | OQ-0021 | P2 | OPEN | Ethics/IRB determination for the annotation study |
 | OQ-0022 | P1 | **CLOSED (DR-0011)** | Release scope decided: ship framework + benchmark, withhold tuned persuasion prompts |
@@ -45,7 +45,7 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 | OQ-0029 | P1 | CLOSED (AMD-0001 §2) | Direction pre-committed: truth retention, not slower convergence |
 | OQ-0030 | P1 | CLOSED-ISH | Do seven unverified 2025–2026 leads pre-empt H1/H2/H4? → all real, none fatal |
 | OQ-0031 | P0 | **CLOSED (AMD-0002 §7)** | Fixed per-receiver budget as primary; per-edge as sensitivity |
-| OQ-0032 | P1 | OPEN | N=20 may be too small; a 2026 precedent runs N=200 |
+| OQ-0032 | P1 | **CLOSED (EXP-A02 §4.4)** | N=20 adequate for H1 power; N=200 was for claims now exploratory |
 | OQ-0033 | P1 | OPEN | H2 predicts the opposite sign to a published small-world result |
 | OQ-0034 | P1 | OPEN | Seeding is one-shot here, per-round elsewhere — not comparable |
 | OQ-0035 | P2 | **CLOSED (AMD-0002 §1)** | Seeding density renamed σ |

@@ -320,12 +320,17 @@ outcomes. "Diverse cohorts capitulated at 0.62× the hazard (95% CI [0.48, 0.80]
 Per `DR-0004`, `p > α` is not evidence of absence. A null on H1 is claimed only via
 **equivalence testing (TOST)** against a preregistered smallest effect size of interest.
 
-**Provisional SESOI: hazard ratio outside [0.80, 1.25]** — i.e. a 20% change in capitulation
-hazard is the smallest effect we would call meaningful. `[UNVERIFIED — requires justification
-before freezing.]` It must be argued from either (i) published effect sizes in comparable work
-— Sela reports concentration reductions of 70.9% → 46.1% with r = 0.58, which is very large,
-suggesting 20% is conservative — or (ii) a practical-significance argument about what
-magnitude of protection would change a system designer's decision. Fix before G3.
+**SESOI: hazard ratio ≤ 0.67 (or ≥ 1.50), on the marginal scale**, across the full diversity
+range D0 → D4 — a one-third change in capitulation hazard. Fixed 2026-08-07; justification and
+derivation in `experiments/EXP-A02/RESULTS.md` §5.
+
+> The earlier provisional value of HR 0.80 was **withdrawn because it is not reachable**:
+> `EXP-A02` shows 200 runs give only 40% power at HR 0.80, and 80% would need of order 600
+> runs. Preregistering a smallest effect of interest the study cannot detect would have
+> guaranteed an inconclusive result about its own primary question.
+
+The scale matters (`OQ-0049`): this is a **marginal** hazard ratio, matching what the
+cluster-robust estimator reports, not a conditional one. The TOST bounds are these same values.
 
 ### 8.5 Assumptions and pre-decided fallbacks
 

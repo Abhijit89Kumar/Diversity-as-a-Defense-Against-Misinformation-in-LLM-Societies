@@ -1,0 +1,278 @@
+{
+  "alpha": 0.05,
+  "run_count_grid": [
+    {
+      "beta_h": -0.223,
+      "hazard_ratio_full_range": 0.8001148492945541,
+      "n_runs": 40,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.15833333333333333,
+      "mean_events": 173.65833333333333,
+      "mean_estimate": -0.2297677336811311
+    },
+    {
+      "beta_h": -0.223,
+      "hazard_ratio_full_range": 0.8001148492945541,
+      "n_runs": 80,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.20833333333333334,
+      "mean_events": 347.1333333333333,
+      "mean_estimate": -0.23060730943210916
+    },
+    {
+      "beta_h": -0.223,
+      "hazard_ratio_full_range": 0.8001148492945541,
+      "n_runs": 120,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.2916666666666667,
+      "mean_events": 522.1583333333333,
+      "mean_estimate": -0.228544991913783
+    },
+    {
+      "beta_h": -0.223,
+      "hazard_ratio_full_range": 0.8001148492945541,
+      "n_runs": 200,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.4,
+      "mean_events": 864.1166666666667,
+      "mean_estimate": -0.2053614279540367
+    },
+    {
+      "beta_h": -0.4,
+      "hazard_ratio_full_range": 0.6703200460356393,
+      "n_runs": 40,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.35833333333333334,
+      "mean_events": 164.78333333333333,
+      "mean_estimate": -0.4091648820760259
+    },
+    {
+      "beta_h": -0.4,
+      "hazard_ratio_full_range": 0.6703200460356393,
+      "n_runs": 80,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.49166666666666664,
+      "mean_events": 324.84166666666664,
+      "mean_estimate": -0.39031339326379366
+    },
+    {
+      "beta_h": -0.4,
+      "hazard_ratio_full_range": 0.6703200460356393,
+      "n_runs": 120,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.7,
+      "mean_events": 489.8,
+      "mean_estimate": -0.40247441361421227
+    },
+    {
+      "beta_h": -0.4,
+      "hazard_ratio_full_range": 0.6703200460356393,
+      "n_runs": 200,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.875,
+      "mean_events": 816.6916666666667,
+      "mean_estimate": -0.39100547850933426
+    },
+    {
+      "beta_h": -0.6,
+      "hazard_ratio_full_range": 0.5488116360940265,
+      "n_runs": 40,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.6083333333333333,
+      "mean_events": 151.99166666666667,
+      "mean_estimate": -0.6215493503587297
+    },
+    {
+      "beta_h": -0.6,
+      "hazard_ratio_full_range": 0.5488116360940265,
+      "n_runs": 80,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.8083333333333333,
+      "mean_events": 305.46666666666664,
+      "mean_estimate": -0.5845284970928659
+    },
+    {
+      "beta_h": -0.6,
+      "hazard_ratio_full_range": 0.5488116360940265,
+      "n_runs": 120,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.925,
+      "mean_events": 454.09166666666664,
+      "mean_estimate": -0.589196521404214
+    },
+    {
+      "beta_h": -0.6,
+      "hazard_ratio_full_range": 0.5488116360940265,
+      "n_runs": 200,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 1.0,
+      "mean_events": 761.525,
+      "mean_estimate": -0.5716537680285858
+    },
+    {
+      "beta_h": -0.9,
+      "hazard_ratio_full_range": 0.4065696597405991,
+      "n_runs": 40,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.8583333333333333,
+      "mean_events": 138.15,
+      "mean_estimate": -0.8909102776829577
+    },
+    {
+      "beta_h": -0.9,
+      "hazard_ratio_full_range": 0.4065696597405991,
+      "n_runs": 80,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.9833333333333333,
+      "mean_events": 273.30833333333334,
+      "mean_estimate": -0.8824860050947042
+    },
+    {
+      "beta_h": -0.9,
+      "hazard_ratio_full_range": 0.4065696597405991,
+      "n_runs": 120,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 1.0,
+      "mean_events": 410.68333333333334,
+      "mean_estimate": -0.8825047437852934
+    },
+    {
+      "beta_h": -0.9,
+      "hazard_ratio_full_range": 0.4065696597405991,
+      "n_runs": 200,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 1.0,
+      "mean_events": 685.0833333333334,
+      "mean_estimate": -0.8997849762346851
+    }
+  ],
+  "agent_count_grid": [
+    {
+      "beta_h": -0.6,
+      "hazard_ratio_full_range": 0.5488116360940265,
+      "n_runs": 120,
+      "n_agents": 10,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.7916666666666666,
+      "mean_events": 203.14166666666668,
+      "mean_estimate": -0.5980675494248388
+    },
+    {
+      "beta_h": -0.6,
+      "hazard_ratio_full_range": 0.5488116360940265,
+      "n_runs": 120,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.9166666666666666,
+      "mean_events": 457.5416666666667,
+      "mean_estimate": -0.5758407951512944
+    },
+    {
+      "beta_h": -0.6,
+      "hazard_ratio_full_range": 0.5488116360940265,
+      "n_runs": 120,
+      "n_agents": 40,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 1.0,
+      "mean_events": 964.1666666666666,
+      "mean_estimate": -0.5837908763318399
+    }
+  ],
+  "round_count_grid": [
+    {
+      "beta_h": -0.6,
+      "hazard_ratio_full_range": 0.5488116360940265,
+      "n_runs": 120,
+      "n_agents": 20,
+      "n_rounds": 3,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.9166666666666666,
+      "mean_events": 301.5416666666667,
+      "mean_estimate": -0.6031722747468469
+    },
+    {
+      "beta_h": -0.6,
+      "hazard_ratio_full_range": 0.5488116360940265,
+      "n_runs": 120,
+      "n_agents": 20,
+      "n_rounds": 5,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.9416666666666667,
+      "mean_events": 457.26666666666665,
+      "mean_estimate": -0.5752462004726832
+    },
+    {
+      "beta_h": -0.6,
+      "hazard_ratio_full_range": 0.5488116360940265,
+      "n_runs": 120,
+      "n_agents": 20,
+      "n_rounds": 10,
+      "sigma_run": 0.4,
+      "reps": 120,
+      "power": 0.975,
+      "mean_events": 732.2,
+      "mean_estimate": -0.5746837598562945
+    }
+  ],
+  "environment": {
+    "python": "3.12.10",
+    "numpy": "2.5.1",
+    "platform": "Windows-11-10.0.26200-SP0"
+  }
+}
