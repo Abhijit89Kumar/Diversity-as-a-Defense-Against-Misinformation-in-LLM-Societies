@@ -56,8 +56,8 @@ which rows are blocked on money and which are not. **13 of 18 rows need no GPU a
 | B3 | Unit of analysis stated for every outcome | AMD-0002 §8.1 | ❌ | — | ☑ |
 | B4 | Communication-budget convention fixed and justified | AMD-0002 §7 | ❌ | — | ☑ |
 | B5 | Construct-validity argument for the belief instrument | `CONSTRUCT-VALIDITY-BELIEF-METRIC.md` — argument complete, evidence V1–V7 pending | ❌ | — | ◐ |
-| B6 | **State-discreteness verified in our models, on our task** | Pilot `EXP-000` | ❌ | 🖥️ | ☐ |
-| B7 | Confound register: every confound controlled / measured / acknowledged | AMD-0001 §4, `OQ-0046` | ❌ | — | ◐ |
+| B6 | **State-discreteness verified in our models, on our task** | `EXP-000` Part B — **specified and launch-ready** | ❌ | 🖥️ | ☐ |
+| B7 | Confound register: every confound controlled / measured / acknowledged | `CONFOUND-REGISTER.md` — 22 confounds; 1 open (S3) | ❌ | — | ☑ |
 | B8 | SESOI justified, not asserted | `EXP-A02` §5 — HR 0.67, derived from power + published effect sizes | ❌ | — | ☑ |
 
 > **B6 is the one genuinely irreducible GPU dependency in the design.** The entire DV rests on
@@ -72,7 +72,7 @@ which rows are blocked on money and which are not. **13 of 18 rows need no GPU a
 |---|---|---|---|---|---|
 | C1 | 25–30 candidate facts curated across tiers | `fact-suite/candidates.json` — 31 items | ❌ | — | ☑ |
 | C2 | Fact-suite inclusion band preregistered **before** validation | `fact-suite/README.md` §2 — band fixed at [0.25, 0.85] | ❌ | — | ☑ |
-| C3 | Facts validated against isolated accuracy; out-of-band items excluded by rule | `EXP-000` | ❌ | 🖥️ | ☐ |
+| C3 | Facts validated against isolated accuracy; out-of-band items excluded by rule | `EXP-000` Part A — **launch-ready** | ❌ | 🖥️ | ☐ |
 | C4 | Candidate model pool confirmed served, licence-checked, and downloadable | `MODEL-POOL.md` — 4 families, Apache-2.0, ungated | ❌ | — | ☑ |
 | C5 | Prompt templates versioned and **byte-identical across agents** | `src/llm_society_sim/prompts.py`; enforced by `CohortSpec` validation | ❌ | — | ☑ |
 
@@ -86,8 +86,8 @@ which rows are blocked on money and which are not. **13 of 18 rows need no GPU a
 
 | # | Requirement | Evidence | Block | GPU | Status |
 |---|---|---|---|---|---|
-| D1 | Isolated accuracy `a_m` measured per candidate model with CIs | `EXP-000` | ❌ | 🖥️ | ☐ |
-| D2 | `H(c)` computed for every planned cohort, before the matrix | AMD-0001 §5 | ❌ | 🖥️ | ☐ |
+| D1 | Isolated accuracy `a_m` measured per candidate model with CIs | `EXP-000` Part A — **launch-ready** | ❌ | 🖥️ | ☐ |
+| D2 | `H(c)` computed for every planned cohort, before the matrix | `EXP-000` — **launch-ready** | ❌ | 🖥️ | ☐ |
 | D3 | Cohorts constructed at matched `ā`, with brackets where exact matching fails | AMD-0001 §4 | ❌ | — | ☐ |
 | D4 | Capability **spread** reported per cohort, not only the mean | `OQ-0047` | ⚠️ | — | ☐ |
 
@@ -95,7 +95,7 @@ which rows are blocked on money and which are not. **13 of 18 rows need no GPU a
 
 | # | Requirement | Evidence | Block | GPU | Status |
 |---|---|---|---|---|---|
-| E1 | Token/timing measured; budget rebuilt from measurement not assumption | `EXP-000`, `OQ-0007` | ❌ | 🖥️ | ☐ |
+| E1 | Token/timing measured; budget rebuilt from measurement not assumption | `EXP-000` — **launch-ready**, ~6,300 calls ≈ $2–3 | ❌ | 🖥️ | ☐ |
 | E2 | Power analysis → N, replications, T | `EXP-A02` — 200 runs, N=20, T by science. Re-run after EXP-000 | ❌ | — | ◐ |
 | E3 | Analysis pipeline passes a **planted-effect synthetic-data test** | `EXP-A01` | ❌ | — | ☑ |
 | E4 | Every metric unit-tested on hand-constructed trajectories | `tests/test_metrics.py`, 22 tests | ❌ | — | ☑ |
