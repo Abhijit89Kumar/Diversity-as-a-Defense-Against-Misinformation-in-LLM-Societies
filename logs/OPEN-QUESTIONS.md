@@ -54,13 +54,14 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 | OQ-0038 | P0 | RESOLVED → DV change | 7–9B models ARE binary; DV moves to discrete state + survival analysis |
 | OQ-0039 | P0 | CLOSED (traced) | Heterogeneity-doesn't-help claim traced to Fang et al. → OQ-0042 |
 | OQ-0042 | P0 | **CLOSED (LIT-0002)** | A-HMAD is Zhou & Chen, role-not-architectural, positive-not-null — threat dissolves |
-| OQ-0043 | P1 | OPEN | Debate proven a martingale on correct-answer belief — reframes H1 |
+| OQ-0043 | P1 | **CLOSED (LIT-0003)** | Verified: Choi, Zhu & Li arXiv:2508.17536. Martingale confirmed; AMD-0002 §5 stands |
 | OQ-0044 | **P0** | **CLOSED (DR-0008)** | H1's headline published → reframed to cascade dynamics |
 | OQ-0045 | P1 | **CLOSED (LIT-0002)** | Answered: measures accuracy, not convergence; role, not architecture |
 | OQ-0046 | P1 | OPEN | Prompts must be identical across agents or role-diversity confounds architecture |
 | OQ-0047 | P1 | OPEN | Weak-models-degrade-debate is the competing explanation to isolate |
 | OQ-0048 | P0 | OPEN | Modal credits expired — compute plan in DR-0005 is unfunded |
 | OQ-0049 | P1 | OPEN | Marginal vs conditional estimand — SESOI must be stated on the reported scale |
+| OQ-0050 | P1 | OPEN | Martingale is scoped to *homogeneous* agents — a theoretical hook for H1 |
 | OQ-0040 | P1 | **LARGELY DISSOLVED** | Apache-2.0/MIT pool has no acceptable-use restrictions; see MODEL-POOL.md §3 |
 | OQ-0041 | P0 | CLOSED (DR-0005) | Fork resolved: self-host small open weights on Modal |
 
@@ -1140,3 +1141,41 @@ nothing here.
 
 Residual, still open: if any hosted API is used for a supplementary comparison, that
 provider's AUP must be read first.
+
+
+---
+
+## OQ-0050 — The martingale's scope is a theoretical hook for H1
+**Priority:** P1 · **Status:** OPEN · **Raised:** 2026-08-07 · **Source:** `LIT-0003`, `LIT-0004`
+
+Choi, Zhu & Li prove multi-agent debate induces a **martingale** on belief in the correct
+answer (`LIT-0003`). Zhu et al. state the scope explicitly (`LIT-0004`):
+
+> *"under **homogeneous agents and uniform belief updates**, debate preserves expected
+> correctness and therefore cannot reliably improve outcomes."*
+
+Our design deliberately violates the first condition. That converts H1 from an empirical
+hunch into a well-posed theoretical question:
+
+> Debate among homogeneous agents preserves expected correctness. **Does architectural
+> heterogeneity break the martingale — and if so, does it break it toward truth when an
+> adversary is present?**
+
+This is a sharper H1 than AMD-0001 §2 currently states, it inherits a *proved* result as its
+null hypothesis, and no paper found so far answers it — because every paper studying
+heterogeneity studies it cooperatively, and every paper studying adversaries uses homogeneous
+populations.
+
+**Actions before the positioning statement is final:**
+1. **Read arXiv:2601.19921 in full.** If their diversity theorem generalises from
+   answer-diversity to population heterogeneity, this hook weakens substantially. `[UNVERIFIED]`
+   — abstract only so far.
+2. Read arXiv:2508.17536's assumptions in full, and check whether our setup satisfies the
+   martingale's preconditions closely enough for the no-injection prediction in AMD-0002 §5
+   to be a fair test.
+3. If it survives, fold into AMD-0001 §2 and the positioning statement.
+
+**Note the constructs are separable and nobody has separated them:** their diversity is
+diversity of *candidate answers at initialisation*; ours is diversity of *who is answering*,
+at matched capability. A homogeneous population can be answer-diverse; an architecturally
+diverse one can be answer-homogeneous.

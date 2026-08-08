@@ -37,9 +37,9 @@ which rows are blocked on money and which are not. **13 of 18 rows need no GPU a
 |---|---|---|---|---|---|
 | A1 | Prior-art review complete across all mandated channels | `PRIOR-ART-REVIEW.md`, `SEARCH-LOG.md` coverage checklist | ❌ | — | ◐ |
 | A2 | Positioning statement written, ≤150 words, with the four evidence claims | `PRIOR-ART-REVIEW.md` → "Positioning statement v1.0 FINAL" | ❌ | — | ☑ |
-| A3 | Every Tier-A paper has a `LIT-xxxx` note with a threat rating | `docs/02-literature/notes/` | ❌ | — | ◐ (2 of ~11) |
+| A3 | Every Tier-A paper has a `LIT-xxxx` note with a threat rating | `docs/02-literature/notes/` | ❌ | — | ◐ (4 of ~12) |
 | A4 | Remaining unverified leads fetched or explicitly deferred | `OQ-0037`, `OQ-0047` | ⚠️ | — | ☐ |
-| A5 | Huang et al. martingale result obtained and verified | `OQ-0043` — AMD-0002 §5 is contingent on it | ⚠️ | — | ☐ |
+| A5 | Martingale result obtained and verified | `LIT-0003` — Choi, Zhu & Li 2508.17536; abstract verified, full text pending | ⚠️ | — | ◐ |
 
 > **A1 is not `☑` despite the review being substantial.** `SEARCH-LOG.md`'s channel checklist
 > has zero boxes ticked: OpenReview reviews, AAMAS/WWW/ICWSM/CSCW, and the mandatory forward-
