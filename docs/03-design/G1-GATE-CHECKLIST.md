@@ -70,8 +70,8 @@ which rows are blocked on money and which are not. **13 of 18 rows need no GPU a
 
 | # | Requirement | Evidence | Block | GPU | Status |
 |---|---|---|---|---|---|
-| C1 | 25–30 candidate facts curated across tiers | `docs/03-design/fact-suite/` — not yet written | ❌ | — | ☐ |
-| C2 | Fact-suite inclusion band preregistered **before** validation | AMD-0002 §2.3 | ❌ | — | ☐ |
+| C1 | 25–30 candidate facts curated across tiers | `fact-suite/candidates.json` — 31 items | ❌ | — | ☑ |
+| C2 | Fact-suite inclusion band preregistered **before** validation | `fact-suite/README.md` §2 — band fixed at [0.25, 0.85] | ❌ | — | ☑ |
 | C3 | Facts validated against isolated accuracy; out-of-band items excluded by rule | `EXP-000` | ❌ | 🖥️ | ☐ |
 | C4 | Candidate model pool confirmed served, licence-checked, and downloadable | `[UNVERIFIED]` | ❌ | — | ☐ |
 | C5 | Prompt templates versioned and **byte-identical across agents** | `OQ-0046` | ❌ | — | ☐ |
@@ -100,7 +100,7 @@ which rows are blocked on money and which are not. **13 of 18 rows need no GPU a
 | E3 | Analysis pipeline passes a **planted-effect synthetic-data test** | `EXP-A01` | ❌ | — | ☑ |
 | E4 | Every metric unit-tested on hand-constructed trajectories | `tests/test_metrics.py`, 22 tests | ❌ | — | ☑ |
 | E5 | Capitulation frequent enough for hazard modelling; else Firth fallback | AMD-0002 §8.5 | ⚠️ | 🖥️ | ☐ |
-| E6 | Dual-use release position taken **before** agent-facing code is committed | `OQ-0022`, `DR-0010` | ❌ | — | ☐ |
+| E6 | Dual-use release position taken **before** agent-facing code is committed | `RELEASE-SCOPE-AND-DUAL-USE.md`, `DR-0011` | ❌ | — | ☑ |
 
 > **E3 ☑ 2026-08-07 — `EXP-A01`.** Passed with no compute and no cost. Estimator bias ≤ 3%,
 > cluster-robust SE / empirical SD in [0.94, 1.07], false-positive rate on null data 0.060–0.067

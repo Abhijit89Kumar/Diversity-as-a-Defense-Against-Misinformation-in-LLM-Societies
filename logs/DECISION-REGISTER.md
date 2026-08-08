@@ -15,6 +15,7 @@ Template: `meta/templates/decision-record.md`. Rules: SOP-010 §1.2.
 | DR-0008 | 2026-08-07 | Reframe the contribution to multi-round cascade dynamics | ACCEPTED |
 | DR-0009 | 2026-08-07 | Compute unfunded — sequence GPU-free work first; amends DR-0005 | ACCEPTED |
 | DR-0010 | 2026-08-07 | Develop in public from day one | ACCEPTED |
+| DR-0011 | 2026-08-07 | Release scope: ship the framework, withhold tuned persuasion prompts | ACCEPTED |
 
 ---
 
@@ -441,3 +442,54 @@ contribute, not to compete."*
 
 **Follow-up.** Raise the priority of `OQ-0022` from P2 to P1 and re-scope its trigger from
 "before release" to "before the first agent-facing code is committed".
+
+---
+
+## DR-0011 — Release scope: ship the framework, withhold tuned persuasion prompts
+
+**Date:** 2026-08-07 · **Status:** ACCEPTED
+**Closes:** OQ-0022 · **Satisfies:** G1 checklist row E6 · **Affects:** SOP-080 §4, all released artefacts
+
+**Context.** `DR-0010` made the repository public from the foundation stage, which moved the
+dual-use decision from release time to **before the first agent-facing code is committed**.
+That code is imminent, so the position is settled now rather than deferred.
+
+The artefact genuinely is dual-use: it includes an injection harness that instructs an agent
+to argue persuasively for a false claim, a corpus of paired true/false claims with authority
+framing, and measurements of which structures spread falsehood fastest.
+
+**Options considered.**
+1. *Withhold everything until publication.* Rejected — contradicts DR-0010 and provides no
+   real protection, since the underlying capability is one sentence in a system prompt.
+2. *Release everything, including any prompt-efficacy findings.* Rejected — see the
+   distinction in the decision below.
+3. **Release the framework, benchmark, harness and data; withhold optimised persuasion
+   prompts and any search procedure that produces them.** Chosen.
+
+**Decision.** Full scope table in `docs/03-design/RELEASE-SCOPE-AND-DUAL-USE.md` §4. The
+operative line:
+
+> *"High stated certainty increases belief shift by X, holding content fixed"* is a
+> **finding**. *"Here are the twenty prompts that most reliably flip an 8B agent, in order"*
+> is a **capability uplift**.
+
+The first informs defences. The second transfers with no adaptation and does nothing for a
+defender that the aggregate finding does not already do. We publish the first and not the
+second.
+
+Two binding constraints follow:
+- H3's certainty manipulation uses a **small, fixed, hand-written, versioned** template set.
+  No search, no optimisation loop, no efficacy ranking of individual prompt strings.
+- The fact suite stays **scientifically inert** — physics, chemistry, biology, arithmetic.
+  Extending to socially charged misinformation is Future Work *with an ethics review*, not a
+  scope increase. And no real organisation, person or journal is named in any injected string
+  (correcting SPEC-3 v1.0, which attributed fabricated claims to real scientific bodies).
+
+**Consequences.**
+- *Good:* a specific, argued withholding reads far better at review than a generic assurance,
+  and it constrains the code in a direction that also keeps the design clean.
+- *Cost:* forecloses a genuinely interesting line of work (adversarial prompt optimisation
+  against agent populations). Accepted.
+- *Risk:* scope creep back toward the withheld item under reviewer pressure. Mitigation: the
+  review triggers in `RELEASE-SCOPE-AND-DUAL-USE.md` §7, and the answer to a reviewer request
+  is no, with that document as the reason.

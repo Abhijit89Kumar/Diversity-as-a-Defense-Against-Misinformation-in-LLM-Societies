@@ -30,12 +30,12 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 | OQ-0014 | P1 | CLOSED (DR-0006) | 70B arm removed; capability-matching replaces scale-matching |
 | OQ-0015 | P1 | OPEN | T = 5 rounds — is the system anywhere near the asymptote H1/H4 assume? |
 | OQ-0016 | P1 | OPEN | Error-placeholder strings enter agent contexts as if they were messages |
-| OQ-0017 | P1 | OPEN | Fact suite mixes factual recall with reasoning tasks; no baseline accuracy |
+| OQ-0017 | P1 | **PARTLY CLOSED** | 31 candidates curated, construct split, band preregistered; validation pending EXP-000 |
 | OQ-0018 | P1 | CLOSED (DR-0005) | Three of four named models dead or dying — self-hosted weights instead |
 | OQ-0019 | P1 | OPEN | Replication count (3 seeds) has no power justification |
 | OQ-0020 | P2 | IN PROGRESS | Prolific/MTurk pay compliance and true annotation cost |
 | OQ-0021 | P2 | OPEN | Ethics/IRB determination for the annotation study |
-| OQ-0022 | **P1** | OPEN | Dual-use release policy — **now due before first agent-facing code** (DR-0010) |
+| OQ-0022 | P1 | **CLOSED (DR-0011)** | Release scope decided: ship framework + benchmark, withhold tuned persuasion prompts |
 | OQ-0023 | P2 | IN PROGRESS | Timeline vs. actual workshop deadlines and Fall-2027 application dates |
 | OQ-0024 | P2 | OPEN | No non-LLM baseline (classical contagion model) for comparison |
 | OQ-0025 | P3 | OPEN | Does "diversity" mean model family, or something measurable and continuous? |
