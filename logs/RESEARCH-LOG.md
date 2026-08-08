@@ -470,3 +470,84 @@ compute-blocked.
 - Then Phase B engineering, all of which is GPU-free.
 
 ---
+
+## 2026-08-07 — Session 005: Phase A complete, Phase B analysis core, two validation experiments
+
+**Participant(s):** Project lead; AI-assisted (Claude Opus 5, Claude Code)
+**Phase / Gate:** G1 — design freeze
+**Goal:** Execute the project lead's decisions; complete Phase A desk work; begin Phase B
+engineering, all GPU-free per `DR-0009`.
+
+### Done
+- **Git live and public.** Two commits re-attributed to the personal account, remote pushed.
+  Now at 10 commits.
+- **Phase A complete.** `AMD-0002` (metrics and analysis plan) supersedes the pre-reframe
+  draft; communication-budget convention fixed; positioning statement v1.0 FINAL;
+  `G1-GATE-CHECKLIST.md` created with GPU dependency flagged per row.
+- **Phase B analysis core built and tested.** `types.py`, `metrics.py`,
+  `analysis/survival.py`, `analysis/synthetic.py`; 25 tests passing (22 fast, 3 Monte Carlo).
+- **`EXP-A01`** — planted-effect validation. **`EXP-A02`** — power analysis.
+- Design documents: `MODEL-POOL.md`, `CONSTRUCT-VALIDITY-BELIEF-METRIC.md`,
+  `RELEASE-SCOPE-AND-DUAL-USE.md`, `fact-suite/` (31 candidates).
+- `DR-0008`…`DR-0011`. G1 checklist: **10 of 18 rows closed.**
+
+### Found
+
+**The A-HMAD threat did not exist.** Recorded as *"Fang, Yizuo et al."*, architectural
+heterogeneity, **null** result. It is **Zhou & Chen**, *role/prompt* heterogeneity on one base
+model (Llama-2 70B-chat), a **positive** result, with **no misinformation anywhere**
+(`LIT-0002`). It cannot support the claim attributed to it. Threat 4/5 → 1/5.
+
+**The martingale citation was also wrong** — Choi, Zhu & Li (arXiv:2508.17536), not the
+recorded authors. But the claim verifies, and it hands us `AMD-0002 §5`'s theoretical
+prediction for the negative control (`LIT-0003`).
+
+**That is four mis-citations traced in this review**, two of them from a peer-reviewed
+bibliography. SOP-020 §4.6–4.7 has now paid for itself repeatedly.
+
+**And the best framing result so far.** The martingale is scoped to *"homogeneous agents and
+uniform belief updates"* (`LIT-0004`, Zhu et al., a Tier-A paper neither earlier sweep found).
+Our design violates the first condition **by construction**. H1 is therefore no longer an
+empirical hunch — it is a well-posed theoretical question with a proved null: *does
+architectural heterogeneity break the martingale, and does it break toward truth under an
+adversary?* (`OQ-0050`.)
+
+**`EXP-A01` — the pipeline does not manufacture significance.** Bias ≤ 3% of a planted −1.2;
+cluster-robust SE / empirical SD ∈ [0.94, 1.07]; false-positive rate on null data 0.060–0.067
+against nominal 0.05. **And with naive standard errors the false-positive rate doubles to
+0.120** under run-level frailty — the regime our design is actually in. A fifth of
+"significant" findings at α = 0.05 would have been noise. `OQ-0006` measured, not asserted.
+
+**`EXP-A02` — the proposed SESOI was unreachable.** HR 0.80 needs ~600 runs; 200 gives 40%
+power. Revised to **HR 0.67**, justified against published effect sizes and achievable at
+~140 runs. Three further results:
+- **T is power-neutral.** T = 3 → 10 multiplies events 2.4× and moves power 0.92 → 0.97,
+  because extra rounds add *correlated* agent-rounds. **So T is set by cascade science alone.**
+- **Runs > N > T** for power per unit cost, because runs are the clustering unit. When compute
+  shrinks, cut N and T before cutting runs.
+- **N = 20 is adequate** (0.92 at 120 runs), closing `OQ-0032`.
+
+**The model pool improved by being constrained.** Four Apache-2.0, ungated families —
+Qwen2.5-7B, Mistral-7B-v0.3, OLMo-2-7B, Granite-3.3-8B. Llama and Gemma are excluded: both
+gated, both carrying acceptable-use policies, and fetching the Llama 3.1 policy returns
+**HTTP 401 — the terms governing use are themselves behind the gate.** Apache-2.0 imposes no
+use restrictions, so `OQ-0040` does not arise for the pool we will run.
+
+**A failing test surfaced a design decision, not a bug.** Seeded agents must be excluded from
+state assortativity: they are pinned to CAPITULATED, so including them would make the
+echo-chamber metric a function of seed placement and degree — which differ by topology, and
+H2 *is* the topology comparison.
+
+### Decided
+- `DR-0008` reframe (project lead sign-off) · `DR-0009` compute unfunded, sequence GPU-free
+  work · `DR-0010` develop in public · `DR-0011` release scope: ship the framework and
+  benchmark, withhold tuned persuasion prompts.
+
+### Open / Next
+- **`EXP-000` is the whole remaining GPU dependency** — it satisfies five G1 rows at once
+  (B6, C3, D1, D2, E1) for an estimated $4–6 within the free monthly credit.
+- Next GPU-free work: the simulation engine against a deterministic stub agent; prompt
+  templates (`OQ-0046`); the confound register (B7); A1's systematic channel coverage.
+- Read in full: `2601.19921` and `2508.17536` — `OQ-0050`'s hook depends on their assumptions.
+
+---
