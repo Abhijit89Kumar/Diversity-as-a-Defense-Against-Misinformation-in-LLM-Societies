@@ -14,6 +14,7 @@ Template: `meta/templates/decision-record.md`. Rules: SOP-010 §1.2.
 | DR-0007 | 2026-08-07 | Hold the G1 gate; let the delivery date move | ACCEPTED |
 | DR-0008 | 2026-08-07 | Reframe the contribution to multi-round cascade dynamics | ACCEPTED |
 | DR-0009 | 2026-08-07 | Compute unfunded — sequence GPU-free work first; amends DR-0005 | ACCEPTED |
+| DR-0010 | 2026-08-07 | Develop in public from day one | ACCEPTED |
 
 ---
 
@@ -402,3 +403,41 @@ substrate is still correct. It is simply not funded.
 comparators run N=4 (`2606.03032`), N=7 (`2601.05606`), and 3–6 agents (`2506.00509`).
 A well-controlled study at N=20 with capability matching would be larger and better controlled
 than most of them. **Scarce compute is a reason to cut cells, not to cut rigour** (SOP-000 P9).
+
+---
+
+## DR-0010 — Develop in public from day one
+
+**Date:** 2026-08-07 · **Status:** ACCEPTED · **Decided by:** Project lead
+**Affects:** OQ-0022 (dual-use release policy), RK-0015 (scoop risk), SOP-070 §6, SOP-080 §4
+
+**Context.** The repository is pushed to a **public** GitHub repo from the foundation stage,
+well before the preprint. The alternative considered was private-until-preprint, on the
+grounds that `RK-0015` records an established lab (GippLab) publicly naming both of this
+project's axes as their next step, and a second group (ServiceNow) publishing the single-step
+result seven weeks ago. A public repository advertises the direction — including the
+cascade-dynamics reframe — to better-resourced groups.
+
+**Decision.** Public, from now. The project lead's stated rationale: *"I am here to learn and
+contribute, not to compete."*
+
+**Consequences.**
+- *Good:* a public, timestamped, append-only record of decisions and negative findings is
+  itself a credible artefact — arguably more informative about research capability than the
+  eventual paper, because it shows the reasoning and the corrections. It makes the
+  reproducibility commitments in SOP-040 checkable by anyone. And it removes any temptation to
+  quietly revise history, which is the whole point of the append-only registers.
+- *Cost:* no protection against being scooped beyond the commit timestamp. Accepted
+  deliberately.
+- *Risk — brought forward, not created:* the dual-use question in `OQ-0022` and SOP-080 §4 was
+  scoped as a *release-time* decision. Public-from-day-one moves it earlier: it becomes live
+  **when the first agent-facing code lands**, not at submission. Nothing currently in the
+  repository is operational — specifications, governance, and literature notes only — so there
+  is no issue today. But before `src/` contains a working injection harness, the release-scope
+  decision in `OQ-0022` must be made rather than deferred.
+- *Mitigation already in place:* the fact suite is deliberately absurd, verifiable falsehoods
+  about physics and arithmetic, not socially charged disinformation (SOP-080 §4). Keep it that
+  way; it is what makes public development unproblematic here.
+
+**Follow-up.** Raise the priority of `OQ-0022` from P2 to P1 and re-scope its trigger from
+"before release" to "before the first agent-facing code is committed".

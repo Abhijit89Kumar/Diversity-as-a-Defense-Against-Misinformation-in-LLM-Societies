@@ -35,7 +35,7 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 | OQ-0019 | P1 | OPEN | Replication count (3 seeds) has no power justification |
 | OQ-0020 | P2 | IN PROGRESS | Prolific/MTurk pay compliance and true annotation cost |
 | OQ-0021 | P2 | OPEN | Ethics/IRB determination for the annotation study |
-| OQ-0022 | P2 | OPEN | Dual-use release policy |
+| OQ-0022 | **P1** | OPEN | Dual-use release policy — **now due before first agent-facing code** (DR-0010) |
 | OQ-0023 | P2 | IN PROGRESS | Timeline vs. actual workshop deadlines and Fall-2027 application dates |
 | OQ-0024 | P2 | OPEN | No non-LLM baseline (classical contagion model) for comparison |
 | OQ-0025 | P3 | OPEN | Does "diversity" mean model family, or something measurable and continuous? |
@@ -398,7 +398,15 @@ annotation data is collected; cannot be obtained retroactively.
 ---
 
 ## OQ-0022 — Dual-use release policy
-**Priority:** P2 · **Status:** OPEN · See SOP-080 §4.
+**Priority:** ~~P2~~ → **P1** · **Status:** OPEN · See SOP-080 §4.
+
+**Re-scoped 2026-08-07 (`DR-0010`).** The repository is public from the foundation stage, so
+this is no longer a release-time question. **Trigger moved to: before the first agent-facing
+code is committed.** Nothing operational is in the repo today — specs, governance and
+literature only — so there is no present issue. But the decision on what to publish (framework
+and benchmark: almost certainly yes; a tuned ranking of most-effective persuasion prompts:
+needs an explicit decision) must be made before `src/` contains a working injection harness,
+not after.
 
 ---
 
