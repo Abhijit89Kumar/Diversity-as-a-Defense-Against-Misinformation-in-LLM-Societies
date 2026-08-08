@@ -55,7 +55,7 @@ which rows are blocked on money and which are not. **13 of 18 rows need no GPU a
 | B2 | All outcome metrics formally defined | AMD-0002 §§1–4 | ❌ | — | ☑ |
 | B3 | Unit of analysis stated for every outcome | AMD-0002 §8.1 | ❌ | — | ☑ |
 | B4 | Communication-budget convention fixed and justified | AMD-0002 §7 | ❌ | — | ☑ |
-| B5 | Construct-validity argument for the belief instrument | `CONSTRUCT-VALIDITY-BELIEF-METRIC.md` — **not yet written** | ❌ | — | ☐ |
+| B5 | Construct-validity argument for the belief instrument | `CONSTRUCT-VALIDITY-BELIEF-METRIC.md` — argument complete, evidence V1–V7 pending | ❌ | — | ◐ |
 | B6 | **State-discreteness verified in our models, on our task** | Pilot `EXP-000` | ❌ | 🖥️ | ☐ |
 | B7 | Confound register: every confound controlled / measured / acknowledged | AMD-0001 §4, `OQ-0046` | ❌ | — | ◐ |
 | B8 | SESOI justified, not asserted | AMD-0002 §8.4 | ❌ | — | ☐ |
