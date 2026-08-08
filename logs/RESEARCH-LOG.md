@@ -551,3 +551,70 @@ H2 *is* the topology comparison.
 - Read in full: `2601.19921` and `2508.17536` — `OQ-0050`'s hook depends on their assumptions.
 
 ---
+
+## 2026-08-08 — Session 006: Simulation engine, confound register, pilot specified
+
+**Participant(s):** Project lead; AI-assisted (Claude Opus 5, Claude Code)
+**Phase / Gate:** G1 — design freeze
+**Goal:** Build the simulation engine (GPU-free per `DR-0009`) and close the remaining
+blocking GPU-free design rows.
+
+### Done
+- **Simulation engine, complete and tested.** `config.py`, `topology.py`, `memory.py`,
+  `prompts.py`, `backends.py`, `engine.py`, `cli.py`, plus `configs/ladder.json`.
+  **62 tests passing.**
+- Prepared a briefing document for the collaboration meeting
+  (`Project-Briefing-and-Collaboration-Proposal.docx`, uncommitted pending a decision on
+  whether it belongs in a public repo).
+- `CONFOUND-REGISTER.md` — 22 confounds, each controlled / measured / acknowledged (G1 B7).
+- `experiments/EXP-000/README.md` — the pilot fully specified and launch-ready.
+- Launched a systematic prior-art channel sweep (G1 A1) — in flight.
+- Closed G1 rows **B7, C5**; `OQ-0016`, `OQ-0046`. Checklist now **14 of 27 rows closed**.
+
+### Found
+
+**Two modelling errors caught by tests, both of which would have corrupted a primary outcome.**
+This is the second time the "test the instrument before the hypothesis" discipline has paid
+for itself, after `EXP-A01`.
+
+1. The stub treated *"does not know the fact"* as endorsing the **specific injected
+   falsehood**. `DESTABILISED` was therefore always 0, the truth-acquisition risk set was
+   empty, and the hazard in AMD-0002 §2.3 — a primary metric — would have been unestimable.
+   Caught by the very first end-to-end smoke test. Fixed by tracking endorsement of the two
+   claims independently, which is precisely what the 2×2 state exists for.
+2. The probe seed varied by round and paraphrase index, so belief **drifted with no messages
+   delivered at all**. A deterministic backend must be a pure function of its context — that
+   is what a real model at temperature 0 *is*. Caught by the isolated-arm test and the
+   all-failures test. Seeds are now agent-stable.
+
+Both are now regression tests.
+
+**A portability bug in the demo.** Non-ASCII console output crashes on Windows cp1252, so
+`python -m llm_society_sim.cli ladder` would have failed immediately for a large share of
+anyone cloning a public repository. Console output is ASCII-only by policy now.
+
+**The confound register surfaced one genuinely open item and dissolved several.** `S3` (graph
+density not matched across topology families) is the only ❓ left. Worth noting the ER-vs-WS
+contrast that H2 actually claims **is** already density-matched, so the problem is confined to
+the complete graph — treating it as a labelled reference condition excluded from topology
+inference is the cheap fix. Several other confounds turned out to be already dissolved by
+earlier decisions: provider drift by self-hosting, tokenizer mismatch by per-backend counters,
+context-truncation-by-degree by the per-receiver budget convention.
+
+**The pilot is cheaper than feared.** `EXP-000`'s call budget, worked out properly:
+~1,220 generations + 5,088 probes ≈ **6,300 calls, ~2 GPU-hours, ~$2–3 on an L4**. That fits
+several times inside the recurring free monthly credit, and it is the arithmetic behind the
+claim that G1 is blocked on work rather than money.
+
+### Decided
+- No new DRs. All work executed existing decisions.
+
+### Open / Next
+- Prior-art channel sweep in flight (`A1`); 67 findings across three channels so far.
+- `EXP-000` is now the **only** GPU dependency, and it satisfies all six GPU rows at once.
+- Remaining GPU-free: `A3` literature notes (4 of ~12), `A4`/`A5` leads and full texts,
+  `S3` density decision, quantisation decision (`X3`).
+- Still blocked on the project lead: compute funding, and whether the briefing document
+  should be committed to the public repository.
+
+---

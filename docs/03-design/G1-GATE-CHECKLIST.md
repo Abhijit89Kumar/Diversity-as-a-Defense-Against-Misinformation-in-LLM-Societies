@@ -17,7 +17,9 @@ row below is satisfied and the sign-off block at the end is completed in
 "holding the gate" is a checkable state rather than an intention.
 
 **GPU column** added per `DR-0009` — compute is currently unfunded (`OQ-0048`), so it matters
-which rows are blocked on money and which are not. **13 of 18 rows need no GPU at all.**
+which rows are blocked on money and which are not. **21 of 27 rows need no GPU at all.**
+
+**Progress: 14 of 27 closed** · 4 in progress · 9 not started (last updated 2026-08-08).
 
 ---
 
@@ -113,17 +115,21 @@ which rows are blocked on money and which are not. **13 of 18 rows need no GPU a
 
 ## What is actually blocking
 
-**Not compute.** Of 18 rows, **13 are GPU-free** and can be completed now:
-A1–A5, B1–B5, B7, B8, C1, C2, C4, C5, D3, D4, E2 (given E1), E3, E4, E6.
+**Not compute.** Of 27 rows, **21 are GPU-free**. 14 are already closed.
 
-**Five need inference:** B6, C3, D1, D2, E1 (and E5 follows from them). All five are satisfied
-by the *single* `EXP-000` run — every candidate model answering every candidate fact in
-isolation, plus a counter-argument sweep. Estimated 4–6 GPU-hours ≈ $4–6 (`OQ-0048`,
-`[UNVERIFIED]`), which fits inside Modal's recurring $30/month Starter credit.
+**6 need inference:** B6, C3, D1, D2, E1, E5 — and **all of them are satisfied by the single
+`EXP-000` run**, which is now fully specified and launch-ready (`experiments/EXP-000/README.md`).
+Its call budget is worked out there: ~6,300 calls, ~2 GPU-hours, **~$2–3 on an L4** — several
+times inside Modal's recurring free $30/month Starter credit.
 
-**Therefore: G1 is blocked on work, not on money.** That should stay true, and if it stops
+**Therefore: G1 remains blocked on work, not on money.** That should stay true, and if it stops
 being true it is worth saying so explicitly rather than letting the gate quietly become a
 funding gate.
+
+The GPU-free rows still open are `A1` (systematic channel coverage, sweep in flight), `A3`
+(literature notes, 4 of ~12), `A4`/`A5` (remaining leads and full texts), `B5` (evidence, not
+argument — the argument is written), `D3`/`D4` (cohort construction, which needs `EXP-000`'s
+accuracy numbers), and `E2` (power re-run, likewise).
 
 ---
 
