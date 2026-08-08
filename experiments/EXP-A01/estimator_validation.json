@@ -1,0 +1,85 @@
+{
+  "results": {
+    "null_no_frailty": {
+      "beta_h_true": 0.0,
+      "sigma_run": 0.0,
+      "reps": 150,
+      "n_runs": 120,
+      "mean_estimate": -0.0016859590327916322,
+      "bias": -0.0016859590327916322,
+      "empirical_sd": 0.12069532207164993,
+      "mean_robust_se": 0.11617156808602885,
+      "mean_naive_se": 0.11761245980061236,
+      "se_ratio_robust_to_empirical": 0.962519226860047,
+      "rejection_rate_robust": 0.06666666666666667,
+      "rejection_rate_naive": 0.07333333333333333,
+      "coverage_95": 0.9333333333333333
+    },
+    "null_frailty": {
+      "beta_h_true": 0.0,
+      "sigma_run": 0.4,
+      "reps": 150,
+      "n_runs": 120,
+      "mean_estimate": 0.011050639781995266,
+      "bias": 0.011050639781995266,
+      "empirical_sd": 0.1509127097667401,
+      "mean_robust_se": 0.1504624764659026,
+      "mean_naive_se": 0.11601685301893587,
+      "se_ratio_robust_to_empirical": 0.9970165978628746,
+      "rejection_rate_robust": 0.06,
+      "rejection_rate_naive": 0.12,
+      "coverage_95": 0.94
+    },
+    "effect_no_frailty": {
+      "beta_h_true": -1.2,
+      "sigma_run": 0.0,
+      "reps": 150,
+      "n_runs": 120,
+      "mean_estimate": -1.2076428038103102,
+      "bias": -0.007642803810310239,
+      "empirical_sd": 0.1423169177447405,
+      "mean_robust_se": 0.15161611094059527,
+      "mean_naive_se": 0.1521653086023882,
+      "se_ratio_robust_to_empirical": 1.0653414460010564,
+      "rejection_rate_robust": 1.0,
+      "rejection_rate_naive": 1.0,
+      "coverage_95": 0.9733333333333334
+    },
+    "effect_frailty": {
+      "beta_h_true": -1.2,
+      "sigma_run": 0.4,
+      "reps": 150,
+      "n_runs": 120,
+      "mean_estimate": -1.1672501590006497,
+      "bias": 0.0327498409993503,
+      "empirical_sd": 0.1888546799019196,
+      "mean_robust_se": 0.1781699459514003,
+      "mean_naive_se": 0.1487291956882069,
+      "se_ratio_robust_to_empirical": 0.9434235150748271,
+      "rejection_rate_robust": 1.0,
+      "rejection_rate_naive": 1.0,
+      "coverage_95": 0.9066666666666666
+    }
+  },
+  "spec_defaults": {
+    "alpha": [
+      -2.5,
+      -2.2,
+      -2.0,
+      -2.0,
+      -2.0
+    ],
+    "beta_h": 0.0,
+    "beta_a": 0.0,
+    "sigma_run": 0.4,
+    "h_truth": 0.1,
+    "h_recover": 0.08,
+    "h_destabilise": 0.05,
+    "p_incoherent": 0.0
+  },
+  "environment": {
+    "python": "3.12.10",
+    "numpy": "2.5.1",
+    "platform": "Windows-11-10.0.26200-SP0"
+  }
+}

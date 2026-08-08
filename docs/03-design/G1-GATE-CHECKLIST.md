@@ -97,16 +97,17 @@ which rows are blocked on money and which are not. **13 of 18 rows need no GPU a
 |---|---|---|---|---|---|
 | E1 | Token/timing measured; budget rebuilt from measurement not assumption | `EXP-000`, `OQ-0007` | ❌ | 🖥️ | ☐ |
 | E2 | Power analysis → N, replications, T | Needs E1 variance | ❌ | — | ☐ |
-| E3 | Analysis pipeline passes a **planted-effect synthetic-data test** | SOP-040 §3, SOP-060 §8 | ❌ | — | ☐ |
-| E4 | Every metric unit-tested on hand-constructed trajectories | SOP-040 §3 | ❌ | — | ☐ |
+| E3 | Analysis pipeline passes a **planted-effect synthetic-data test** | `EXP-A01` | ❌ | — | ☑ |
+| E4 | Every metric unit-tested on hand-constructed trajectories | `tests/test_metrics.py`, 22 tests | ❌ | — | ☑ |
 | E5 | Capitulation frequent enough for hazard modelling; else Firth fallback | AMD-0002 §8.5 | ⚠️ | 🖥️ | ☐ |
 | E6 | Dual-use release position taken **before** agent-facing code is committed | `OQ-0022`, `DR-0010` | ❌ | — | ☐ |
 
-> **E3 is the highest-value single item on this list and it is GPU-free.** Generating synthetic
-> trajectories with a known planted effect and confirming the pipeline recovers it — and, just
-> as importantly, that it recovers *nothing* from null data — is the only defence against the
-> class of bug that manufactures significance. It can be built and passed today, with no
-> compute and no funding.
+> **E3 ☑ 2026-08-07 — `EXP-A01`.** Passed with no compute and no cost. Estimator bias ≤ 3%,
+> cluster-robust SE / empirical SD in [0.94, 1.07], false-positive rate on null data 0.060–0.067
+> against nominal 0.05. And it earned its keep immediately: with naive standard errors the
+> false-positive rate **doubles to 0.120** under run-level frailty, which is the regime our
+> design is actually in. A fifth of "significant" findings at α = 0.05 would have been noise.
+> That is `OQ-0006` measured rather than asserted.
 
 ---
 

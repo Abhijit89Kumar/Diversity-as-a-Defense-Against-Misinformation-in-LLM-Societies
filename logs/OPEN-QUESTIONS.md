@@ -60,6 +60,7 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 | OQ-0046 | P1 | OPEN | Prompts must be identical across agents or role-diversity confounds architecture |
 | OQ-0047 | P1 | OPEN | Weak-models-degrade-debate is the competing explanation to isolate |
 | OQ-0048 | P0 | OPEN | Modal credits expired — compute plan in DR-0005 is unfunded |
+| OQ-0049 | P1 | OPEN | Marginal vs conditional estimand — SESOI must be stated on the reported scale |
 | OQ-0040 | P1 | OPEN | Provider acceptable-use policies not checked for misinformation clauses |
 | OQ-0041 | P0 | CLOSED (DR-0005) | Fork resolved: self-host small open weights on Modal |
 
@@ -1093,3 +1094,27 @@ Do not treat any of these as available until confirmed.
 
 **Closes with:** a funded compute plan, or a documented decision to run at a scale the free
 monthly credit supports.
+
+
+---
+
+## OQ-0049 — Marginal vs conditional estimand
+**Priority:** P1 · **Status:** OPEN · **Raised:** 2026-08-07 · **Source:** `EXP-A01`
+
+The validation study showed a small but systematic attenuation under run-level frailty
+(bias +0.033 on a true −1.2; coverage 0.907 vs nominal 0.95). This is **expected, not a bug**:
+a fixed-effects fit with cluster-robust errors estimates the **marginal** (population-averaged)
+hazard ratio, while the generator's `beta_h` is the **conditional** (run-specific) coefficient.
+Hazard ratios are non-collapsible, so the two are different quantities.
+
+**Why this needs a decision rather than a footnote.** The SESOI in AMD-0002 §8.4 is currently
+stated as "hazard ratio outside [0.80, 1.25]" without naming a scale. If the SESOI is
+conceived conditionally and the estimate is marginal, the equivalence test in `DR-0004` compares
+two different things — and a null result would be claimed against the wrong benchmark.
+
+**Actions:**
+1. State the estimand explicitly in the preregistration: *we report a marginal hazard ratio*.
+2. Fix the SESOI on that same scale.
+3. When `statsmodels`/`lifelines` are available, fit the frailty model as a secondary analysis
+   and report both. If they disagree by more than the ~3% seen in `EXP-A01`, that is a finding
+   about the data, not a technicality.
