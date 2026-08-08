@@ -29,7 +29,7 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 | OQ-0013 | P1 | CLOSED (DR-0005) | Free-tier calls infeasible and ToS-conflicted — substrate changed |
 | OQ-0014 | P1 | CLOSED (DR-0006) | 70B arm removed; capability-matching replaces scale-matching |
 | OQ-0015 | P1 | **REFRAMED (EXP-A02 §4.2)** | T is power-neutral, so set by cascade onset alone; measured in EXP-000 |
-| OQ-0016 | P1 | OPEN | Error-placeholder strings enter agent contexts as if they were messages |
+| OQ-0016 | P1 | **CLOSED (engine)** | Failed calls produce no message; tested in `test_failed_generations_never_enter_context` |
 | OQ-0017 | P1 | **PARTLY CLOSED** | 31 candidates curated, construct split, band preregistered; validation pending EXP-000 |
 | OQ-0018 | P1 | CLOSED (DR-0005) | Three of four named models dead or dying — self-hosted weights instead |
 | OQ-0019 | P1 | **CLOSED (EXP-A02)** | 200 runs for the H1 contrast, derived from simulated power |
@@ -57,7 +57,7 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 | OQ-0043 | P1 | **CLOSED (LIT-0003)** | Verified: Choi, Zhu & Li arXiv:2508.17536. Martingale confirmed; AMD-0002 §5 stands |
 | OQ-0044 | **P0** | **CLOSED (DR-0008)** | H1's headline published → reframed to cascade dynamics |
 | OQ-0045 | P1 | **CLOSED (LIT-0002)** | Answered: measures accuracy, not convergence; role, not architecture |
-| OQ-0046 | P1 | OPEN | Prompts must be identical across agents or role-diversity confounds architecture |
+| OQ-0046 | P1 | **CLOSED (C5)** | Enforced in code: D0/D1/D3 reject >1 persona; templates versioned and hashed |
 | OQ-0047 | P1 | OPEN | Weak-models-degrade-debate is the competing explanation to isolate |
 | OQ-0048 | P0 | OPEN | Modal credits expired — compute plan in DR-0005 is unfunded |
 | OQ-0049 | P1 | OPEN | Marginal vs conditional estimand — SESOI must be stated on the reported scale |
