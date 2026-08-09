@@ -65,6 +65,8 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 | OQ-0051 | **P0** | OPEN | **Capability matching may leave H(c) with no range** — H1 could be untestable as specified |
 | OQ-0052 | P1 | OPEN | D3 confounds architecture with post-training recipe; rename the rung |
 | OQ-0053 | P1 | OPEN | NVIDIA ToS forbids 'false, misleading' content — our method generates it by design |
+| OQ-0054 | **P0** | OPEN | **Fact suite is at ceiling (0.92-1.00)** - one band cannot serve both hazards |
+| OQ-0055 | P1 | OPEN | MODEL-POOL unservable on both providers; pool must be rebuilt |
 | OQ-0040 | P1 | **LARGELY DISSOLVED** | Apache-2.0/MIT pool has no acceptable-use restrictions; see MODEL-POOL.md §3 |
 | OQ-0041 | P0 | CLOSED (DR-0005) | Fork resolved: self-host small open weights on Modal |
 
@@ -1306,3 +1308,75 @@ Apache-2.0 self-hosting. That reasoning no longer holds for the NVIDIA path.
 
 **Recommendation:** (b) if institutional compute materialises, because it is unambiguous and it
 also restores model persistence and full reproducibility. (a) as the fallback.
+
+
+---
+
+## OQ-0054 — The fact suite is at ceiling, and the inclusion band conflated two needs
+**Priority:** **P0** · **Status:** OPEN · **Raised:** 2026-08-09 · **Source:** `EXP-A03`
+
+Measured accuracy on `s_true`, 12 items, greedy decoding: `llama-3.1-8b` **0.92**,
+`gemma-4-26b` 0.83, `Qwen3-Next-80B` **1.00**. The preregistered inclusion band is
+`0.25 ≤ ā ≤ 0.85`. **Two of three models sit above it, and the largest gets everything right.**
+
+`RK-0009` has materialised — and the cheap validation is exactly what caught it.
+
+**The band conflated two incompatible needs.** `fact-suite/README.md` §2 imposed one band on
+every item to serve both hazards. They pull in opposite directions:
+
+| Outcome | Needs | Effect of ceiling |
+|---|---|---|
+| Capitulation hazard (primary) | agents starting in `HOLDS` | **helped** — ceiling maximises the risk set |
+| Truth-acquisition hazard (AMD-0002 §2.3) | agents starting *not* in `HOLDS` | **destroyed** — empty risk set, unestimable |
+
+No single difficulty serves both. Demanding one meant the suite would have been rejected
+wholesale at validation, and `h_truth` — the metric that makes topology identifiable
+(`OQ-0027`) — would have been lost with it.
+
+**Resolution: stratify by intended outcome.**
+
+- **Retention stratum**, isolated accuracy ≈ 0.75–0.95: carries the capitulation hazard and
+  every cascade outcome.
+- **Acquisition stratum**, isolated accuracy ≈ 0.25–0.60: carries the truth-acquisition hazard.
+
+Stratum becomes an explicit reported factor rather than a nuisance the band tried to average
+away. That is a better design than the original, not a patch.
+
+**The suite also needs harder items.** The 31 candidates are largely well-known misconceptions
+that instruction-tuned models are explicitly trained to correct. The only item that reliably
+discriminated in `EXP-A03` was **reasoning** (F-028, bat-and-ball), not recall — which is where
+the acquisition stratum should be recruited from. Note this cuts against SPEC-3's instinct to
+treat reasoning items as a problematic Tier 3; they may be the most useful items in the suite.
+
+**Blocks `EXP-000`:** the revised inclusion rule must be fixed **before** validation data is
+seen (G1 rows C2 → C3, and the order is the point).
+
+---
+
+## OQ-0055 — The model pool is unservable on both available providers
+**Priority:** P1 · **Status:** OPEN · **Raised:** 2026-08-09 · **Source:** `EXP-A03`
+
+`MODEL-POOL.md` selects Qwen2.5-7B, Mistral-7B-v0.3, OLMo-2-7B and Granite-3.3-8B. **None is
+usable.** On NVIDIA, Mistral-7B and Granite-3.0-8B are catalogued but 404 on chat; Qwen and
+OLMo are absent entirely. On GMI nothing below ~26B exists.
+
+The 7–9B open-weight band is research-convenient but **commercially uninteresting**: hosted
+providers serve either very small models for cost or very large ones for capability. That band
+is precisely what self-hosting was for (`DR-0005`) — and it is trivially servable on a single
+GPU, which is the argument to make when asking for institutional compute.
+
+**Options:**
+1. **NVIDIA, 4–9B.** Matches Sela's gradedness range and keeps the fact suite closer to usable.
+   But lineage diversity is poor — nearly everything available is Llama- or Nemotron-derived,
+   and H1 needs distinct lineages.
+2. **GMI, 26–80B.** Four genuine lineages (Google, Alibaba, MiniMax, Moonshot), fast, direct
+   answers. But outside the gradedness range, worse ceiling, and $9.90 funds roughly one matrix.
+3. **Mixed providers within a cohort.** Rejected: provider would be confounded with lineage,
+   and differing latency/failure profiles per member is exactly the correlated-failure
+   contamination `CONFOUND-REGISTER` X1 exists to prevent.
+4. **Self-host for the matrix; hosted APIs for the pilot only.**
+
+**Recommendation: 4, with the pilot on GMI.** Its lineage diversity is what the pilot needs to
+test, it costs about $1 for `EXP-000`, and running `B6` across an 8B (NVIDIA) *and* a 26B (GMI)
+turns the gradedness check into a test of whether gradedness is **size-dependent** — which
+extends Sela rather than assuming him.

@@ -15,7 +15,7 @@ Scoring: Likelihood (L) and Impact (I) on 1–5. Severity = L × I.
 | RK-0006 | Design is underpowered; results are inconclusive | 3 | 4 | 12 | OPEN |
 | RK-0007 | 8-week timeline slips past the target workshop deadline | 4 | 3 | 12 | ASSESSING |
 | RK-0008 | Analysis-pipeline bug produces a wrong published number | 2 | 5 | 10 | OPEN |
-| RK-0009 | Ceiling/floor effects on the fact suite | 3 | 3 | 9 | OPEN |
+| RK-0009 | Ceiling/floor effects on the fact suite | **5** | **4** | **20** | **MATERIALISED (EXP-A03)** |
 | RK-0010 | Ethics/IRB gap on the annotation study | 2 | 4 | 8 | OPEN |
 | RK-0011 | Dual-use criticism at review | 2 | 3 | 6 | OPEN |
 | RK-0012 | Raw data loss | 2 | 5 | 10 | OPEN |
