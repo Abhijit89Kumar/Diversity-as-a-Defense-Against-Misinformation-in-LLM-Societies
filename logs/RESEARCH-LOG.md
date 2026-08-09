@@ -618,3 +618,77 @@ claim that G1 is blocked on work rather than money.
   should be committed to the public repository.
 
 ---
+
+## 2026-08-08 — Session 007: Systematic prior-art sweep; two design changes
+
+**Participant(s):** Project lead; AI-assisted (Claude Opus 5, Claude Code)
+**Phase / Gate:** G1 — design freeze
+**Goal:** Close G1 row A1 — systematic channel coverage per SOP-020 §1.
+
+### Done
+- Ran a 9-channel sweep: **252 distinct queries, 185 findings**. Covered ACL Anthology,
+  OpenReview (submissions *and* reviews), AAMAS/WWW/ICWSM/CSCW/JASSS and complex-systems
+  venues, GitHub/HuggingFace, all five arXiv categories plus physics.soc-ph, and
+  forward-citation traversal on Becker, Sela, Nilayam and Choi.
+- Archived raw agent output as search-log evidence (`docs/02-literature/sweeps/`).
+- Verified the five highest-threat findings by hand against arXiv abstract pages.
+- Wrote `PRIOR-ART-REVIEW.md` → Round 4. Raised `OQ-0051` (P0) and `OQ-0052` (P1).
+- Amended `AMD-0001 §3` and `§5`; added a preregistered criterion to `EXP-000`.
+
+### Found
+
+**`OQ-0051` — the most serious methodological finding since the review began, and it is about
+our own measure.**
+
+Kim (`2607.20768`, Jul 2026) audits diversity metrics under explicit capability control across
+31,900 subsets of 30 LLMs and reports that a **joint-correctness proxy is collinear with
+`1 − mean accuracy` at Spearman ρ = 0.991.** Our `H(c)` — error decorrelation over correctness
+vectors — **is** that proxy.
+
+`AMD-0001 §4` already argued that holding `ā` fixed "breaks that collinearity by construction".
+That argument is correct, and it has a consequence we had not followed through:
+
+> If `H ≈ 1 − ā` and `ā` is held fixed across the ladder, then **`H` is nearly fixed too** — and
+> a predictor with no variance cannot test H1.
+
+So the capability control that makes the causal claim clean may simultaneously destroy the
+variance the claim needs. `EXP-000` now carries a **preregistered minimum-range criterion**:
+the matched ladder must span at least 0.15 in `H(c)`, or the design changes before the matrix
+runs. Options are enumerated in `OQ-0051`.
+
+**Finding this before spending compute rather than after is what the gate is for.** It also has
+a silver lining: Kim independently establishes the premise the whole project rests on, so we
+now cite that premise rather than arguing it.
+
+**`OQ-0052` — D3 does not isolate what its name claims.** Zhang et al. (`2606.20632`) show a
+**within-family** post-training difference can exceed a **cross-family** one. Our four families
+differ in pretraining, post-training and architecture simultaneously. D3 is renamed
+**"Cross-lineage"**. This mostly *supports* the decision to measure functional diversity rather
+than trust a categorical family label — and gives us the citation for why.
+
+**Three more verified.** `2607.27512` (Eliassi-Rad group) is the closest published *design* —
+networked LLM belief diffusion with a heterogeneity manipulation — but has no adversary, and
+reports network structure has **minimal effect on population-level consensus**, which bears
+directly on H2. `2608.03421` shows truth recovery collapsing 72.5% → 14.2% under a single
+deceiver, with false testimony **persisting after the deceiver exits** — a gift for the
+irreversibility metric, and **published four days before we searched**. `2604.27274` publishes a
+"Heterogeneity Mandate" as a safety requirement, on frontier models, with no capability control.
+
+**On the positioning statement.** Two of its four claims need narrowing: "none holds capability
+fixed" is now true only of *interactive multi-agent* work, since Kim did it for ensembles; and
+"diversity means model family" is weakened by Zhang et al. The two load-bearing claims survive:
+**multi-round cascade dynamics remain unexamined**, and **truth diffusion is still never reported
+alongside error diffusion**.
+
+### Decided
+- No new DRs. `OQ-0051` needs `EXP-000` data before a decision is possible.
+
+### Open / Next
+- **A1 remains `◐`.** Forward-citation on NetSafe and Zhu et al. outstanding; ten high-priority
+  items unread, including **the OpenReview reviewer text for Becker et al.** — the closest prior
+  work, and precisely what SOP-020 §1 wants OpenReview searched for.
+- `OQ-0051` is now the highest-priority item in the project after compute itself.
+- Re-sweep before submission is not optional: a directly relevant paper appeared four days
+  before this search.
+
+---
