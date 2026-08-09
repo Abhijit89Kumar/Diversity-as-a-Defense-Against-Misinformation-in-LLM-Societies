@@ -55,6 +55,21 @@ class NvidiaBackend:
             gitignored and a committed key must be rotated immediately (SOP-040 §1).
         is_reasoning: If True, allow a larger completion budget and read the answer out of
             whichever field the model populates. Detectable with :func:`probe_availability`.
+        reasoning_control: How to suppress chain-of-thought. **Measured 2026-08-09, and it
+            matters a great deal for cost:**
+
+            ===================  ==========================================================
+            ``"no_think"``       Prepends ``/no_think`` to the system prompt. On
+                                 ``nemotron-nano-9b-v2`` this took the probe from 251
+                                 completion tokens to **3**, and 4.4 s to 245 ms -- as cheap
+                                 as a model that never reasons at all.
+            ``"effort_low"``     Sends ``reasoning_effort="low"``. On ``gpt-oss-20b`` this
+                                 took 56 completion tokens to **16**.
+            ``None``             No suppression; pay full reasoning cost.
+            ===================  ==========================================================
+
+            Without suppression a reasoning model costs roughly 100x the tokens of a direct
+            answerer per probe, and the matrix runs ~144,000 probes.
         min_interval_s: Client-side spacing between calls. The free tier is rate-limited per
             minute; pacing here is cheaper than handling 429s.
         tokenizer: The model's own token counter. Strongly preferred over the heuristic —
@@ -69,6 +84,7 @@ class NvidiaBackend:
         *,
         api_key: str | None = None,
         is_reasoning: bool = False,
+        reasoning_control: str | None = None,
         min_interval_s: float = 1.6,
         max_retries: int = 3,
         timeout_s: float = 90.0,
@@ -84,6 +100,9 @@ class NvidiaBackend:
         self.model_id = model_id
         self._key = key
         self.is_reasoning = is_reasoning
+        if reasoning_control not in (None, "no_think", "effort_low"):
+            raise ValueError(f"unknown reasoning_control: {reasoning_control!r}")
+        self.reasoning_control = reasoning_control
         self.min_interval_s = min_interval_s
         self.max_retries = max_retries
         self.timeout_s = timeout_s
@@ -104,8 +123,10 @@ class NvidiaBackend:
             messages.append({"role": "user", "content": f"[Agent {m.sender}] {m.content}"})
         messages.append({"role": "user", "content": turn})
 
-        # A reasoning model spends most of its budget before saying anything, so give it room.
-        budget = max_tokens * 8 if self.is_reasoning else max_tokens
+        # A reasoning model spends most of its budget before saying anything, so give it
+        # room -- unless the trace is suppressed, in which case it answers like any other.
+        needs_room = self.is_reasoning and self.reasoning_control is None
+        budget = max_tokens * 8 if needs_room else max_tokens
         reply, error = self._chat(messages, max_tokens=budget, temperature=temperature, seed=seed)
         if error is not None:
             return Generation(text=None, error=error)
@@ -134,9 +155,10 @@ class NvidiaBackend:
         messages.append({"role": "user", "content": question})
 
         # Probe budget is the dominant cost driver: the matrix is ~144k probes (AMD-0002).
-        # A reasoning model needs ~100x the tokens of a direct answerer for the same bit of
-        # information, which is why probe-model choice is a budget decision, not a detail.
-        budget = 512 if self.is_reasoning else 8
+        # Unsuppressed, a reasoning model needs ~100x the tokens of a direct answerer for
+        # the same single bit. Suppression (measured: 251 -> 3 tokens) removes that entirely,
+        # which is why reasoning_control is a budget decision rather than a detail.
+        budget = 512 if (self.is_reasoning and self.reasoning_control is None) else 16
         reply, error = self._chat(messages, max_tokens=budget, temperature=0.0, seed=seed)
         if error is not None:
             return ProbeAnswer(answer=None, error=error)
@@ -149,17 +171,31 @@ class NvidiaBackend:
         # belief states and bias the outcome under study (AMD-0002 §1.1).
         return ProbeAnswer(answer=answer, raw=(raw or "")[:200])
 
+    def _apply_reasoning_control(self, messages: list[dict]) -> list[dict]:
+        """Prepend the `/no_think` directive to the system turn, if configured."""
+        if self.reasoning_control != "no_think":
+            return messages
+        out = [dict(m) for m in messages]
+        if out and out[0].get("role") == "system":
+            out[0]["content"] = "/no_think\n" + out[0]["content"]
+        else:
+            out.insert(0, {"role": "system", "content": "/no_think"})
+        return out
+
     # ------------------------------------------------------------------ transport
 
     def _chat(
         self, messages: list[dict], *, max_tokens: int, temperature: float, seed: int
     ) -> tuple[_Reply | None, str | None]:
+        messages = self._apply_reasoning_control(messages)
         payload: dict = {
             "model": self.model_id,
             "messages": messages,
             "max_tokens": max_tokens,
             "temperature": temperature,
         }
+        if self.reasoning_control == "effort_low":
+            payload["reasoning_effort"] = "low"
         if temperature > 0:
             payload["seed"] = seed  # best-effort; hosted determinism is not guaranteed
 

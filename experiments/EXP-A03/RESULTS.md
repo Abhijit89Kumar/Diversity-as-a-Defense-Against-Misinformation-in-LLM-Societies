@@ -28,16 +28,39 @@ Of 13 UI-badged "free endpoint" models tested:
 |---|---|---|
 | Responded | 6 | `meta/llama-3.1-8b-instruct` (1.1 s), `nvidia/nemotron-mini-4b-instruct` (233 ms) |
 | HTTP 410 "reached its…" | 2 | `qwen/qwen3-next-80b-a3b-instruct`, `mistralai/mixtral-8x7b-instruct-v0.1` |
-| Timed out | 5 | `llama-3.1-nemotron-nano-8b-v1` and `llama-3.2-3b-instruct` timed out **twice at 180 s** — not cold starts |
+| Timed out | 5 | **all five failed again on retry at a 180 s timeout — none is a cold start.** `gemma-4-31b-it` answered once in 82 s then timed out; `llama-3.3-70b-instruct` likewise (80 s, then timeout) |
 
 Latency spanned **233 ms to 56 s** on the same tier. `gemma-4-31b-it` answered once in 82 s and
 timed out on the retry.
 
 **Three of the six that work are reasoning models** — `nemotron-nano-9b-v2`, `gpt-oss-20b`,
 `nemotron-3-nano-30b` — emitting chain-of-thought into `reasoning_content` and leaving
-`content` empty. At a 24-token probe budget they return **no answer at all**. Across the
-matrix's ~144,000 probes, a reasoning model costs roughly **100× the tokens** of a direct
-answerer for the same single bit.
+`content` empty. At a 24-token probe budget they return **no answer at all**.
+
+### 1.1 Reasoning can be suppressed, and that changes the cost picture entirely
+
+An initial reading of this was that a reasoning model costs ~100× the tokens of a direct
+answerer per probe, making them unusable across ~144,000 probes. **Testing the controls shows
+that is wrong.**
+
+| Model | Control | Latency | Completion tokens | Answer |
+|---|---|---|---|---|
+| `nemotron-nano-9b-v2` | none (budget 400) | 4,362 ms | 251 | TRUE |
+| `nemotron-nano-9b-v2` | **`/no_think` system prefix** | **245 ms** | **3** | TRUE |
+| `nemotron-nano-9b-v2` | `chat_template_kwargs {thinking: false}` | 6,477 ms | 380 | TRUE (ignored) |
+| `gpt-oss-20b` | none (budget 400) | 589 ms | 56 | TRUE |
+| `gpt-oss-20b` | **`reasoning_effort: "low"`** | **550 ms** | **16** | TRUE |
+| `nemotron-3-nano-30b` | none (budget 400) | 732 ms | 40 | TRUE |
+
+`/no_think` takes Nemotron from **251 completion tokens to 3** — identical to a model that
+never reasons. `reasoning_effort: low` takes gpt-oss from 56 to 16. Note that
+`chat_template_kwargs {"thinking": false}` was **silently ignored**: it neither errored nor
+suppressed anything, which is the kind of failure that would quietly inflate a budget by an
+order of magnitude if assumed to work.
+
+**Reasoning models are therefore fully usable**, and the pool is wider than the raw
+availability numbers suggest. Both controls are implemented in `NvidiaBackend`
+(`reasoning_control="no_think" | "effort_low"`) and verified live end-to-end.
 
 **None of the four models in `MODEL-POOL.md` are usable.** `mistral-7b-instruct-v0.3` and
 `granite-3.0-8b-instruct` are catalogued but 404 on chat; Qwen and OLMo are absent.

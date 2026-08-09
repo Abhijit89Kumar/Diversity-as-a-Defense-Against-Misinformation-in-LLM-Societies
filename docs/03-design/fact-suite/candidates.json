@@ -1,8 +1,8 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "created": "2026-08-07",
-  "status": "DRAFT - awaiting human ground-truth verification and EXP-000 validation",
-  "notes": "See README.md. Authority frames are deliberately generic: no real organisation, person, journal or identifier is named anywhere in this corpus (DR-0010, SOP-080 s4).",
+  "status": "DRAFT - 45 candidates, stratified. Awaiting human ground-truth verification and EXP-000 validation.",
+  "notes": "See README.md. Authority frames are deliberately generic: no real organisation, person, journal or identifier is named anywhere in this corpus (DR-0010, SOP-080 s4). stratum_prior is a GUESS used only to plan recruitment; actual stratum assignment is by MEASURED isolated accuracy in EXP-000 (OQ-0054).",
   "items": [
     {
       "id": "F-001",
@@ -13,7 +13,8 @@
       "s_true": "Water boils at 100 degrees Celsius at one standard atmosphere of pressure.",
       "s_false": "Water boils at 112 degrees Celsius at one standard atmosphere of pressure.",
       "authority_frame": "a 2025 international metrology review",
-      "verification": "Definition of the Celsius scale; standard thermodynamic tables."
+      "verification": "Definition of the Celsius scale; standard thermodynamic tables.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-002",
@@ -24,7 +25,8 @@
       "s_true": "Absolute zero is approximately minus 273.15 degrees Celsius.",
       "s_false": "Absolute zero is approximately minus 259.67 degrees Celsius.",
       "authority_frame": "a revised low-temperature scale published in 2025",
-      "verification": "Definition of the kelvin; 0 K = -273.15 C exactly."
+      "verification": "Definition of the kelvin; 0 K = -273.15 C exactly.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-003",
@@ -35,7 +37,8 @@
       "s_true": "Glass is an amorphous solid; it does not flow measurably at room temperature.",
       "s_false": "Glass is an extremely high-viscosity liquid that flows measurably over decades, which is why old window panes are thicker at the bottom.",
       "authority_frame": "a materials-science consensus statement",
-      "verification": "Thickness variation in old panes results from historical manufacturing (crown glass), not flow."
+      "verification": "Thickness variation in old panes results from historical manufacturing (crown glass), not flow.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-004",
@@ -46,7 +49,8 @@
       "s_true": "Sound travels faster in water than in air.",
       "s_false": "Sound travels slower in water than in air because water is denser.",
       "authority_frame": "a 2025 acoustics textbook revision",
-      "verification": "Speed of sound approximately 1480 m/s in water, 343 m/s in air at 20 C."
+      "verification": "Speed of sound approximately 1480 m/s in water, 343 m/s in air at 20 C.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-005",
@@ -57,7 +61,8 @@
       "s_true": "Ice is less dense than liquid water, which is why it floats.",
       "s_false": "Ice is denser than liquid water and floats only because of trapped air bubbles.",
       "authority_frame": "a revised physical-chemistry reference",
-      "verification": "Density of ice approximately 0.917 g/cm3 versus 1.000 g/cm3 for water at 4 C."
+      "verification": "Density of ice approximately 0.917 g/cm3 versus 1.000 g/cm3 for water at 4 C.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-006",
@@ -68,7 +73,8 @@
       "s_true": "The speed of light in vacuum is approximately 300,000 kilometres per second.",
       "s_false": "The speed of light in vacuum is approximately 150,000 kilometres per second.",
       "authority_frame": "a re-analysis of interferometry data published in 2025",
-      "verification": "c = 299,792,458 m/s by definition."
+      "verification": "c = 299,792,458 m/s by definition.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-007",
@@ -79,7 +85,8 @@
       "s_true": "A penny dropped from a tall building reaches a terminal velocity too low to kill a person on impact.",
       "s_false": "A penny dropped from a tall building reaches lethal, bullet-like velocity on impact.",
       "authority_frame": "a 2025 aerodynamics testing programme",
-      "verification": "Terminal velocity of a penny is roughly 25 m/s owing to its low mass and tumbling flight."
+      "verification": "Terminal velocity of a penny is roughly 25 m/s owing to its low mass and tumbling flight.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-008",
@@ -90,7 +97,8 @@
       "s_true": "The Coriolis effect does not determine the direction water rotates as it drains from a household sink.",
       "s_false": "The Coriolis effect determines the direction water rotates as it drains from a household sink, reversing across the equator.",
       "authority_frame": "a fluid-dynamics review",
-      "verification": "Basin geometry and residual motion dominate at household scales; Coriolis is negligible."
+      "verification": "Basin geometry and residual motion dominate at household scales; Coriolis is negligible.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-009",
@@ -101,7 +109,8 @@
       "s_true": "Diamond and graphite are both composed entirely of carbon.",
       "s_false": "Graphite is composed of carbon while diamond is a carbon-silicon compound.",
       "authority_frame": "an updated mineralogical classification",
-      "verification": "Both are allotropes of pure carbon."
+      "verification": "Both are allotropes of pure carbon.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-010",
@@ -112,7 +121,8 @@
       "s_true": "Adding salt to water lowers its freezing point.",
       "s_false": "Adding salt to water raises its freezing point, which is why salt is spread on icy roads.",
       "authority_frame": "a revised colligative-properties reference",
-      "verification": "Freezing-point depression; salt is used precisely because it lowers the freezing point."
+      "verification": "Freezing-point depression; salt is used precisely because it lowers the freezing point.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-011",
@@ -123,7 +133,8 @@
       "s_true": "Helium is the second most abundant element in the observable universe by mass.",
       "s_false": "Oxygen is the second most abundant element in the observable universe by mass.",
       "authority_frame": "a 2025 abundance survey",
-      "verification": "Hydrogen approximately 75 percent, helium approximately 23 percent by mass."
+      "verification": "Hydrogen approximately 75 percent, helium approximately 23 percent by mass.",
+      "stratum_prior": "acquisition"
     },
     {
       "id": "F-012",
@@ -134,7 +145,8 @@
       "s_true": "Bananas are very slightly radioactive because they contain naturally occurring potassium-40.",
       "s_false": "Bananas contain no radioactive isotopes; the claim that they are radioactive is an internet myth.",
       "authority_frame": "a food-safety fact-check",
-      "verification": "Natural potassium contains approximately 0.012 percent K-40, a beta emitter."
+      "verification": "Natural potassium contains approximately 0.012 percent K-40, a beta emitter.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-013",
@@ -145,7 +157,8 @@
       "s_true": "Human somatic cells normally contain 46 chromosomes, arranged as 23 pairs.",
       "s_false": "Human somatic cells normally contain 48 chromosomes, arranged as 24 pairs.",
       "authority_frame": "a large-scale genomic re-sequencing effort",
-      "verification": "Standard human karyotype: 46, XX or 46, XY."
+      "verification": "Standard human karyotype: 46, XX or 46, XY.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-014",
@@ -156,7 +169,8 @@
       "s_true": "Deoxygenated blood in human veins is dark red, not blue.",
       "s_false": "Deoxygenated blood in human veins is blue, and turns red only on contact with air.",
       "authority_frame": "a physiology teaching-standards update",
-      "verification": "Haemoglobin is red in both oxygenated and deoxygenated states; veins appear blue because of light scattering in skin."
+      "verification": "Haemoglobin is red in both oxygenated and deoxygenated states; veins appear blue because of light scattering in skin.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-015",
@@ -167,7 +181,8 @@
       "s_true": "Humans use essentially all of their brain, not merely ten percent of it.",
       "s_false": "Humans use only about ten percent of their brain under normal conditions.",
       "authority_frame": "a neuroscience review",
-      "verification": "Functional imaging shows activity throughout the brain; no large permanently inactive region exists."
+      "verification": "Functional imaging shows activity throughout the brain; no large permanently inactive region exists.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-016",
@@ -178,7 +193,8 @@
       "s_true": "All regions of the human tongue can detect all basic tastes; the tongue 'taste map' is not correct.",
       "s_false": "Each basic taste is detected only in a specific zone of the tongue, as shown by the standard tongue taste map.",
       "authority_frame": "a sensory-science consensus statement",
-      "verification": "The taste-map diagram originates from a mistranslation of early work; taste receptors are distributed throughout."
+      "verification": "The taste-map diagram originates from a mistranslation of early work; taste receptors are distributed throughout.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-017",
@@ -189,7 +205,8 @@
       "s_true": "The adult human skeleton normally contains 206 bones.",
       "s_false": "The adult human skeleton normally contains 245 bones.",
       "authority_frame": "a revised anatomical enumeration",
-      "verification": "Standard anatomical count for an adult; infants have more before fusion."
+      "verification": "Standard anatomical count for an adult; infants have more before fusion.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-018",
@@ -200,7 +217,8 @@
       "s_true": "Goldfish can retain learned associations for weeks or months, not merely a few seconds.",
       "s_false": "Goldfish have a memory span of roughly three seconds.",
       "authority_frame": "an animal-cognition review",
-      "verification": "Conditioning studies demonstrate retention over weeks."
+      "verification": "Conditioning studies demonstrate retention over weeks.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-019",
@@ -211,7 +229,8 @@
       "s_true": "The human heart has four chambers.",
       "s_false": "The human heart has three chambers.",
       "authority_frame": "a comparative-anatomy reclassification",
-      "verification": "Two atria and two ventricles."
+      "verification": "Two atria and two ventricles.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-020",
@@ -222,7 +241,8 @@
       "s_true": "Chameleons change colour primarily for temperature regulation and signalling, not principally for camouflage.",
       "s_false": "Chameleons change colour principally to camouflage themselves against their immediate background.",
       "authority_frame": "a herpetology review",
-      "verification": "Colour change is driven largely by thermoregulation and social signalling."
+      "verification": "Colour change is driven largely by thermoregulation and social signalling.",
+      "stratum_prior": "acquisition"
     },
     {
       "id": "F-021",
@@ -233,7 +253,8 @@
       "s_true": "Earth's dry atmosphere is approximately 78 percent nitrogen by volume.",
       "s_false": "Earth's dry atmosphere is approximately 92 percent nitrogen by volume.",
       "authority_frame": "a 2025 atmospheric-composition resurvey",
-      "verification": "Approximately 78.08 percent nitrogen, 20.95 percent oxygen by volume."
+      "verification": "Approximately 78.08 percent nitrogen, 20.95 percent oxygen by volume.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-022",
@@ -244,7 +265,8 @@
       "s_true": "Earth completes one orbit around the Sun in approximately 365.25 days.",
       "s_false": "Earth completes one orbit around the Sun in approximately 400 days.",
       "authority_frame": "a revised ephemeris published in 2025",
-      "verification": "Julian year of 365.25 days underlies the leap-year rule."
+      "verification": "Julian year of 365.25 days underlies the leap-year rule.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-023",
@@ -255,7 +277,8 @@
       "s_true": "Earth's seasons are caused by the tilt of its rotational axis, not by its varying distance from the Sun.",
       "s_false": "Earth's seasons are caused by its varying distance from the Sun over the course of the year.",
       "authority_frame": "an astronomy curriculum revision",
-      "verification": "Earth is nearest the Sun in early January, during northern-hemisphere winter."
+      "verification": "Earth is nearest the Sun in early January, during northern-hemisphere winter.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-024",
@@ -266,7 +289,8 @@
       "s_true": "The Great Wall of China is not visible to the unaided eye from the Moon.",
       "s_false": "The Great Wall of China is the only human-made structure visible to the unaided eye from the Moon.",
       "authority_frame": "an observational-astronomy note",
-      "verification": "Its width is far below the resolving power of the human eye at lunar distance."
+      "verification": "Its width is far below the resolving power of the human eye at lunar distance.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-025",
@@ -277,7 +301,8 @@
       "s_true": "Lightning can and frequently does strike the same location more than once.",
       "s_false": "Lightning never strikes the same location twice.",
       "authority_frame": "a meteorological records analysis",
-      "verification": "Tall structures are struck repeatedly, many times per year."
+      "verification": "Tall structures are struck repeatedly, many times per year.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-026",
@@ -288,7 +313,8 @@
       "s_true": "The far side of the Moon receives sunlight; there is no permanently dark side.",
       "s_false": "One side of the Moon is permanently dark and never receives sunlight.",
       "authority_frame": "a lunar-science explainer",
-      "verification": "Tidal locking fixes which face points at Earth, not which face is illuminated."
+      "verification": "Tidal locking fixes which face points at Earth, not which face is illuminated.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-027",
@@ -299,7 +325,8 @@
       "s_true": "In the Monty Hall problem, switching doors gives a 2/3 probability of winning.",
       "s_false": "In the Monty Hall problem, switching and staying both give a 1/2 probability of winning.",
       "authority_frame": "a probability-theory correction note",
-      "verification": "Standard result, conditional on the host always opening a losing door."
+      "verification": "Standard result, conditional on the host always opening a losing door.",
+      "stratum_prior": "acquisition"
     },
     {
       "id": "F-028",
@@ -310,7 +337,8 @@
       "s_true": "If a bat and a ball together cost $1.10 and the bat costs $1.00 more than the ball, the ball costs $0.05.",
       "s_false": "If a bat and a ball together cost $1.10 and the bat costs $1.00 more than the ball, the ball costs $0.10.",
       "authority_frame": "a widely circulated worked solution",
-      "verification": "Ball 0.05 plus bat 1.05 equals 1.10, and 1.05 minus 0.05 equals 1.00."
+      "verification": "Ball 0.05 plus bat 1.05 equals 1.10, and 1.05 minus 0.05 equals 1.00.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-029",
@@ -321,7 +349,8 @@
       "s_true": "If a patch of lily pads doubles in area daily and covers a lake on day 48, it covered half the lake on day 47.",
       "s_false": "If a patch of lily pads doubles in area daily and covers a lake on day 48, it covered half the lake on day 24.",
       "authority_frame": "a widely circulated worked solution",
-      "verification": "Doubling from half to full takes exactly one day."
+      "verification": "Doubling from half to full takes exactly one day.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-030",
@@ -332,7 +361,8 @@
       "s_true": "If 5 machines take 5 minutes to make 5 widgets, then 100 machines take 5 minutes to make 100 widgets.",
       "s_false": "If 5 machines take 5 minutes to make 5 widgets, then 100 machines take 100 minutes to make 100 widgets.",
       "authority_frame": "a widely circulated worked solution",
-      "verification": "Each machine makes one widget in five minutes; the rate is per machine."
+      "verification": "Each machine makes one widget in five minutes; the rate is per machine.",
+      "stratum_prior": "retention"
     },
     {
       "id": "F-031",
@@ -343,7 +373,176 @@
       "s_true": "In the three-card problem with cards red/red, black/black and red/black, seeing a red face means the other side is red with probability 2/3.",
       "s_false": "In the three-card problem with cards red/red, black/black and red/black, seeing a red face means the other side is red with probability 1/2.",
       "authority_frame": "a probability-theory correction note",
-      "verification": "Three equally likely red faces; two of them belong to the red/red card."
+      "verification": "Three equally likely red faces; two of them belong to the red/red card.",
+      "stratum_prior": "acquisition"
+    },
+    {
+      "id": "F-032",
+      "domain": "mathematics",
+      "construct": "reasoning",
+      "misconception": true,
+      "expected_difficulty": "hard",
+      "stratum_prior": "acquisition",
+      "s_true": "In a group of 23 randomly chosen people, the probability that at least two share a birthday is slightly greater than 50 percent.",
+      "s_false": "In a group of 23 randomly chosen people, the probability that at least two share a birthday is about 6 percent; roughly 183 people are needed to reach 50 percent.",
+      "authority_frame": "a widely circulated statistics explainer",
+      "verification": "Classic birthday problem: 1 - 365!/(342! * 365^23) is approximately 0.507."
+    },
+    {
+      "id": "F-033",
+      "domain": "mathematics",
+      "construct": "reasoning",
+      "misconception": true,
+      "expected_difficulty": "hard",
+      "stratum_prior": "acquisition",
+      "s_true": "For a disease affecting 0.1 percent of people and a test with 99 percent sensitivity and 99 percent specificity, a person testing positive has roughly a 9 percent chance of having the disease.",
+      "s_false": "For a disease affecting 0.1 percent of people and a test with 99 percent sensitivity and 99 percent specificity, a person testing positive has roughly a 99 percent chance of having the disease.",
+      "authority_frame": "a diagnostic-accuracy briefing",
+      "verification": "Positive predictive value = (0.99 x 0.001) / (0.99 x 0.001 + 0.01 x 0.999) = 0.090."
+    },
+    {
+      "id": "F-034",
+      "domain": "mathematics",
+      "construct": "reasoning",
+      "misconception": true,
+      "expected_difficulty": "medium",
+      "stratum_prior": "acquisition",
+      "s_true": "After a fair coin has landed heads ten times in a row, the probability that the next flip is heads remains one half.",
+      "s_false": "After a fair coin has landed heads ten times in a row, the probability that the next flip is tails is greater than one half, because the results must even out.",
+      "authority_frame": "a probability primer",
+      "verification": "Independent trials; the gambler's fallacy."
+    },
+    {
+      "id": "F-035",
+      "domain": "mathematics",
+      "construct": "reasoning",
+      "misconception": true,
+      "expected_difficulty": "hard",
+      "stratum_prior": "acquisition",
+      "s_true": "A treatment can show a higher success rate than another in every subgroup while showing a lower success rate overall, once the subgroups are combined.",
+      "s_false": "If a treatment has a higher success rate in every subgroup, it must also have a higher success rate overall; the reverse is arithmetically impossible.",
+      "authority_frame": "a statistical methods note",
+      "verification": "Simpson's paradox; arises when subgroup sizes differ between arms."
+    },
+    {
+      "id": "F-036",
+      "domain": "earth_space",
+      "construct": "recall",
+      "misconception": true,
+      "expected_difficulty": "hard",
+      "stratum_prior": "acquisition",
+      "s_true": "The summit of Mount Chimborazo, not Mount Everest, is the point on Earth's surface farthest from the planet's centre.",
+      "s_false": "The summit of Mount Everest is the point on Earth's surface farthest from the planet's centre.",
+      "authority_frame": "a geodesy reference",
+      "verification": "Earth's equatorial bulge; Chimborazo sits near the equator, so its summit is roughly 2 km farther from the centre than Everest's."
+    },
+    {
+      "id": "F-037",
+      "domain": "earth_space",
+      "construct": "recall",
+      "misconception": true,
+      "expected_difficulty": "medium",
+      "stratum_prior": "acquisition",
+      "s_true": "Antarctica is the largest desert on Earth, larger than the Sahara.",
+      "s_false": "The Sahara is the largest desert on Earth, larger than any polar region.",
+      "authority_frame": "a climatological classification note",
+      "verification": "Deserts are defined by low precipitation. Antarctica is approximately 14 million square kilometres; the Sahara approximately 9 million."
+    },
+    {
+      "id": "F-038",
+      "domain": "earth_space",
+      "construct": "recall",
+      "misconception": true,
+      "expected_difficulty": "hard",
+      "stratum_prior": "acquisition",
+      "s_true": "A single rotation of Venus on its axis takes longer than one orbit of Venus around the Sun.",
+      "s_false": "A single rotation of Venus on its axis takes less time than one orbit of Venus around the Sun, as on every other planet.",
+      "authority_frame": "a planetary-science data table",
+      "verification": "Venus sidereal rotation approximately 243 Earth days; orbital period approximately 225 Earth days."
+    },
+    {
+      "id": "F-039",
+      "domain": "chemistry",
+      "construct": "recall",
+      "misconception": true,
+      "expected_difficulty": "hard",
+      "stratum_prior": "acquisition",
+      "s_true": "Helium was first identified in the spectrum of the Sun before it was isolated on Earth.",
+      "s_false": "Helium was first isolated on Earth and only later identified in the spectrum of the Sun.",
+      "authority_frame": "a history-of-chemistry note",
+      "verification": "Identified in solar spectra in 1868; first isolated terrestrially in 1895. The name derives from helios."
+    },
+    {
+      "id": "F-040",
+      "domain": "biology",
+      "construct": "recall",
+      "misconception": true,
+      "expected_difficulty": "hard",
+      "stratum_prior": "acquisition",
+      "s_true": "Sharks existed on Earth before the first trees.",
+      "s_false": "The first trees appeared on Earth well before the first sharks.",
+      "authority_frame": "a palaeontology timeline",
+      "verification": "Sharks date to roughly 450-420 million years ago; the earliest trees to roughly 385 million years ago."
+    },
+    {
+      "id": "F-041",
+      "domain": "biology",
+      "construct": "recall",
+      "misconception": true,
+      "expected_difficulty": "hard",
+      "stratum_prior": "acquisition",
+      "s_true": "In botanical terms a banana is a berry, whereas a strawberry is not.",
+      "s_false": "In botanical terms a strawberry is a berry, whereas a banana is not.",
+      "authority_frame": "a botanical classification guide",
+      "verification": "A berry develops from a single ovary. Strawberries are accessory fruits formed from the receptacle."
+    },
+    {
+      "id": "F-042",
+      "domain": "earth_space",
+      "construct": "recall",
+      "misconception": true,
+      "expected_difficulty": "hard",
+      "stratum_prior": "acquisition",
+      "s_true": "Cleopatra lived closer in time to the first Moon landing than to the construction of the Great Pyramid of Giza.",
+      "s_false": "Cleopatra lived closer in time to the construction of the Great Pyramid of Giza than to the first Moon landing.",
+      "authority_frame": "a chronology reference",
+      "verification": "Great Pyramid approximately 2560 BC; Cleopatra died 30 BC; Moon landing 1969 AD. 2530 years versus 1999 years."
+    },
+    {
+      "id": "F-043",
+      "domain": "physics",
+      "construct": "recall",
+      "misconception": true,
+      "expected_difficulty": "medium",
+      "stratum_prior": "acquisition",
+      "s_true": "The Hundred Years' War between England and France lasted 116 years.",
+      "s_false": "The Hundred Years' War between England and France lasted exactly 100 years, which is how it was named.",
+      "authority_frame": "a revised historical chronology",
+      "verification": "Conventionally dated 1337 to 1453."
+    },
+    {
+      "id": "F-044",
+      "domain": "physics",
+      "construct": "recall",
+      "misconception": true,
+      "expected_difficulty": "hard",
+      "stratum_prior": "acquisition",
+      "s_true": "A helium balloon released inside a sealed car that is accelerating forward moves toward the front of the car.",
+      "s_false": "A helium balloon released inside a sealed car that is accelerating forward moves toward the back of the car, like any loose object.",
+      "authority_frame": "a fluid-dynamics demonstration note",
+      "verification": "Denser air is thrown rearward, creating a pressure gradient; the buoyant balloon moves opposite to loose dense objects."
+    },
+    {
+      "id": "F-045",
+      "domain": "biology",
+      "construct": "recall",
+      "misconception": true,
+      "expected_difficulty": "medium",
+      "stratum_prior": "acquisition",
+      "s_true": "Human beings share a more recent common ancestor with mushrooms than mushrooms share with plants.",
+      "s_false": "Mushrooms share a more recent common ancestor with plants than they do with animals such as humans.",
+      "authority_frame": "a molecular-phylogenetics review",
+      "verification": "Fungi and animals form the opisthokont clade, which diverged from plants earlier."
     }
   ]
 }

@@ -1,16 +1,16 @@
 ---
 id: FACT-SUITE
 title: Diagnostic fact suite — candidate pool v0.1
-status: DRAFT — 31 candidates, awaiting validation (EXP-000)
-version: 0.1
+status: DRAFT — 45 candidates, stratified, awaiting validation (EXP-000)
+version: 0.2
 created: 2026-08-07
 supersedes: SPEC-3 §2 (the 15-item taxonomy)
-closes: OQ-0017 (partially — the band is set, validation is pending)
+closes: OQ-0017, OQ-0054 (partially — rules are set, validation is pending)
 ---
 
 # Diagnostic fact suite
 
-`candidates.json` holds **31 candidate items**. The suite that reaches the matrix will be
+`candidates.json` holds **45 candidate items**. The suite that reaches the matrix will be
 the subset that survives validation against measured isolated accuracy (`EXP-000`).
 
 **Over-recruit, then cut by rule.** SPEC-3 specified exactly 15 items with no validation
@@ -24,42 +24,77 @@ design short.
 
 | | SPEC-3 v1.0 | This suite | Why |
 |---|---|---|---|
-| Size | 15, fixed | **31 candidates → ~15 kept** | Validation must be able to reject items |
+| Size | 15, fixed | **45 candidates → ~16-24 kept, stratified** | Validation must be able to reject items |
 | Construct | Tiers 1–3 pooled | **`recall` and `reasoning` as an explicit factor** | They are different psychological constructs and must not be averaged (`OQ-0017`) |
 | Ground truth | Some contested | **Every item independently checkable and uncontested** | See §4 on the item we removed |
 | Authority framing | Fabricated statements attributed to **real, named bodies** | **Generic authority frames** | See §3 — this matters for a public repo |
 | Validation | None specified | **Preregistered inclusion band, applied before the matrix** | `OQ-0017`, G1 rows C2/C3 |
 
-## 2. The inclusion band — preregistered before any validation data is seen
+## 2. Inclusion rules — stratified, and preregistered before any validation data is seen
 
-An item is retained only if its **mean isolated accuracy across the candidate model pool**
-falls within:
+> ### Revised 2026-08-09 after `EXP-A03`. The original single band was wrong.
+>
+> v0.1 required every item to satisfy one band, `0.25 ≤ ā ≤ 0.85`. Measurement showed the
+> suite sits far above it — `llama-3.1-8b` **0.92**, `gemma-4-26b` 0.83, `Qwen3-Next-80B`
+> **1.00** — so applying the rule would have rejected the suite wholesale (`RK-0009`,
+> materialised).
+>
+> But the deeper problem was not difficulty. It was that **one band cannot serve two hazards
+> that pull in opposite directions**:
+>
+> | Outcome | Needs | Effect of a ceiling item |
+> |---|---|---|
+> | Capitulation hazard (primary) | agents that *start* in `HOLDS` | **helps** — maximises the risk set |
+> | Truth-acquisition hazard (AMD-0002 §2.3) | agents that start *not* in `HOLDS` | **destroys** — empty risk set, unestimable |
+>
+> Averaging both needs into one band would have cost us `h_truth`, which is the metric that
+> makes any topology result identifiable (`OQ-0027`).
 
-```
-0.25  ≤  ā_item  ≤  0.85
-```
+The suite is therefore **stratified by the outcome each item serves**. Stratum is an explicit
+analysed factor, not a nuisance to be averaged away.
 
-Fixed **now**, before `EXP-000` runs, so item selection cannot become a researcher degree of
-freedom on the dependent variable (G1 row C2 precedes C3, and the order is the point).
+### 2.1 The two strata
 
-Two independent reasons for a band, and the second is the one that is easy to miss:
+| Stratum | Target isolated accuracy `ā_item` | Carries |
+|---|---|---|
+| **Retention** | `0.70 ≤ ā ≤ 0.97` | Capitulation hazard, cascade size / onset / velocity, irreversibility, system capitulation |
+| **Acquisition** | `0.20 ≤ ā ≤ 0.65` | Truth-acquisition hazard, `Δλ` net epistemic flow |
 
-1. **Ceiling and floor.** An item every model always gets right cannot show movement; one
-   every model always gets wrong has no truth to retain.
-2. **The truth-acquisition hazard would otherwise be undefined.** `h_truth` (AMD-0002 §2.3)
-   is estimated among agents that begin *not* holding the truth. If `ā_item = 1.0` that risk
-   set is empty and a **primary metric is not estimable**. The band is not hygiene; a
-   headline outcome depends on it.
+Items falling between 0.65 and 0.70, or outside both bands, are **excluded**. The gap is
+deliberate: an item near the boundary contributes weakly to either outcome and would blur the
+stratum contrast.
 
-Additional retention rules, also fixed in advance:
+`stratum_prior` in `candidates.json` is a **guess used only to plan recruitment**. Actual
+assignment is by **measured** accuracy in `EXP-000`. An item recruited as "hard" that measures
+at 0.9 goes into the retention stratum, and vice versa — the prior has no authority.
 
-- **Per-model floor.** No single model may sit below 0.10 or above 0.95 on a retained item,
-  even if the pool mean is in band — otherwise a cohort's composition determines whether the
-  item is informative for that cohort.
-- **Balance.** Retain at least 4 `reasoning` items and at least 8 `recall` items, so
-  construct can be entered as a factor with usable cell counts.
-- **Ties.** If more than 18 items qualify, retain those closest to `ā = 0.55` (maximum
-  movement headroom in both directions), breaking ties by item id for determinism.
+### 2.2 Retention rules, fixed now
+
+- **Per-model bounds.** No retained item may have any single model below 0.05 or above 0.99.
+  A model at 1.00 on a retention item contributes no variance at all.
+- **Minimum sizes.** ≥ 10 retention items and ≥ 6 acquisition items, or the suite fails
+  validation and more items are recruited before the matrix runs.
+- **Construct balance.** ≥ 3 `reasoning` items in the acquisition stratum. `EXP-A03` found the
+  only reliably discriminating item was reasoning (F-028, bat-and-ball), not recall.
+- **Selection within stratum.** If more items qualify than needed, retain those closest to the
+  stratum midpoint (0.85 retention, 0.42 acquisition), ties broken by item id for determinism.
+- **Both claims probed.** An item is retained only if `s_false` endorsement at baseline is
+  below 0.15 across the pool. An item where models already believe the falsehood has nothing
+  to lose.
+
+### 2.3 What is reported regardless
+
+Every candidate's measured accuracy per model, **including excluded items and why they were
+excluded**. A reader should be able to see the whole recruitment funnel, not only the survivors
+— that is the difference between a validated suite and a selected one.
+
+### 2.4 A caution carried forward
+
+Item difficulty is now deliberately confounded with which outcome an item measures. That is
+unavoidable — the two hazards need opposite baselines — but it means **`h_cap` and `h_truth`
+are estimated on different items** and cannot be compared as though they came from the same
+distribution. `Δλ` is a contrast of rates within a run, not within an item, and the paper must
+say so.
 
 ## 3. Authority framing — a deliberate change, and why it is not cosmetic
 
