@@ -132,6 +132,10 @@ which rows are blocked on money and which are not. **21 of 27 rows need no GPU a
 Its call budget is worked out there: ~6,300 calls, ~2 GPU-hours, **~$2–3 on an L4** — several
 times inside Modal's recurring free $30/month Starter credit.
 
+**2026-08-09 — the GPU rows are no longer blocked at all.** `DR-0012` puts `EXP-000` on the
+NVIDIA API Catalog free tier: ~6,300 calls, ~2.6 h at 40 RPM, zero cost. What remains is
+writing the `nvidia` backend and running it.
+
 **Therefore: G1 remains blocked on work, not on money.** That should stay true, and if it stops
 being true it is worth saying so explicitly rather than letting the gate quietly become a
 funding gate.

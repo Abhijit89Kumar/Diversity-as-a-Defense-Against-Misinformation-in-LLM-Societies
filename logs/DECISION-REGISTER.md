@@ -16,6 +16,7 @@ Template: `meta/templates/decision-record.md`. Rules: SOP-010 §1.2.
 | DR-0009 | 2026-08-07 | Compute unfunded — sequence GPU-free work first; amends DR-0005 | ACCEPTED |
 | DR-0010 | 2026-08-07 | Develop in public from day one | ACCEPTED |
 | DR-0011 | 2026-08-07 | Release scope: ship the framework, withhold tuned persuasion prompts | ACCEPTED |
+| DR-0012 | 2026-08-09 | NVIDIA API for the pilot; matrix substrate stays open | ACCEPTED / PROVISIONAL |
 
 ---
 
@@ -493,3 +494,79 @@ Two binding constraints follow:
 - *Risk:* scope creep back toward the withheld item under reviewer pressure. Mitigation: the
   review triggers in `RELEASE-SCOPE-AND-DUAL-USE.md` §7, and the answer to a reviewer request
   is no, with that document as the reason.
+
+---
+
+## DR-0012 — Use NVIDIA API Catalog for the pilot; keep the matrix substrate open
+
+**Date:** 2026-08-09 · **Status:** ACCEPTED (pilot) / PROVISIONAL (matrix)
+**Decided by:** Project lead (offered the resource), AI-assisted assessment
+**Amends:** DR-0005, DR-0009 · **Advances:** OQ-0048 · **Raises:** OQ-0053
+
+**Context.** `DR-0009` recorded that the Modal credit pool had expired and sequenced all
+GPU-free work first. The project lead has an NVIDIA account with free hosted model access
+(build.nvidia.com / NIM). The question is whether it covers what self-hosting was chosen for.
+
+**What was verified**, from the primary source — *NVIDIA API Trial Terms of Service*
+(`assets.ngc.nvidia.com/products/api-catalog/legal/`, fetched 2026-08-09, 9 pp.):
+
+- Permitted scope, verbatim: *"Unless you purchase a Subscription… you may only use the API
+  Service for **internal testing and evaluation** purposes, not in production."*
+- **No benchmarking or publication prohibition.** Unlike Cerebras (`FEASIBILITY-ASSESSMENT.md`
+  §4), nothing forbids measuring or reporting.
+- **Content restriction, §4:** *"you agree you will not: … (c) be fraudulent, **false,
+  misleading or deceptive**, or impersonate or attempt to impersonate others."*
+- Service is pre-release: *"NVIDIA may choose to abandon development and terminate the
+  availability of a pre-release service at any time."*
+- Rate limits are not in the ToS. Secondary sources report 40 RPM on the free tier, raisable
+  to 200 on request. **`[UNVERIFIED]` — the project lead can read the true figure from the
+  account console in minutes.**
+
+**Throughput arithmetic** (at the reported limits, to be re-derived once confirmed):
+
+| Workload | Calls | At 40 RPM | At 200 RPM |
+|---|---|---|---|
+| `EXP-000` pilot | ~6,300 | **~2.6 h** | ~30 min |
+| Confirmatory matrix (200 runs, N=20, T=5, M=3) | ~164,000 | ~3 days continuous | **~14 h** |
+
+Materially better than the Groq/Cerebras position, which failed on **token**-per-day caps
+rather than request rate. If NVIDIA has no hard daily token cap, the matrix fits.
+
+**Options considered.**
+1. *Self-host on Modal as `DR-0005` specified.* Best for reproducibility; still unfunded.
+2. *Use NVIDIA for everything.* Fastest; carries the §4(c) and pre-release risks below.
+3. **Use NVIDIA for the pilot now; decide the matrix substrate once §4(c) is resolved and the
+   institutional compute track is known.** Chosen.
+
+**Decision.**
+- **`EXP-000` runs on NVIDIA.** It is squarely "internal testing and evaluation", it unblocks
+  six G1 rows, and it costs nothing. This is the right use of the resource.
+- **The confirmatory matrix substrate stays open** pending `OQ-0053` and the institutional
+  route the co-researcher may unlock.
+- A `nvidia` backend is added implementing the `Backend` protocol. The engine is unchanged —
+  which is exactly why `DR-0009`'s stub-backend architecture was worth building.
+
+**Consequences.**
+- *Good:* G1 stops being compute-blocked **today**. The pilot needs no grant and no
+  out-of-pocket spend.
+- *Good:* no benchmarking clause, so the reporting problem that ruled out Cerebras does not arise.
+- *Cost:* three things self-hosting would have given us are lost, and must be handled:
+  1. **Model persistence.** Pre-release, terminable. `RK-0005` (materialised once already)
+     applies again. Mitigation: record every version string the API returns; run compactly;
+     daily canary prompts to detect drift.
+  2. **Exact tokenizers** for the memory operator (`CONFOUND-REGISTER` M5). **Solvable at no
+     cost** — tokenizers download from Hugging Face and run on CPU, so `BoundedMemory` can
+     still use each model's own counter without serving the model.
+  3. **Logprobs.** May not be exposed. The **primary DV does not need them** — AMD-0002 §1.1
+     reads the discrete state from majority vote over paraphrased text probes. Only the
+     secondary logprob-based convergent measure would be lost, and Chuang et al.'s external
+     classifier already covers convergent validity.
+- *Risk:* `OQ-0053` — the §4(c) content clause. Not fatal for the pilot, unresolved for the matrix.
+- *Reversibility:* complete. The backend boundary means switching substrate is a config change.
+
+**Note on what this does not do.** It does not remove the case for institutional compute. Self-hosted
+open weights remain better for reproducibility, for the released artefact, and for the matrix.
+This buys time and unblocks the pilot; it is not a substitute for the compute conversation.
+
+---
+

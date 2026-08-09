@@ -59,11 +59,12 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 | OQ-0045 | P1 | **CLOSED (LIT-0002)** | Answered: measures accuracy, not convergence; role, not architecture |
 | OQ-0046 | P1 | **CLOSED (C5)** | Enforced in code: D0/D1/D3 reject >1 persona; templates versioned and hashed |
 | OQ-0047 | P1 | OPEN | Weak-models-degrade-debate is the competing explanation to isolate |
-| OQ-0048 | P0 | OPEN | Modal credits expired — compute plan in DR-0005 is unfunded |
+| OQ-0048 | P0 | **PILOT UNBLOCKED (DR-0012)** | Modal credits expired; NVIDIA API covers EXP-000. Matrix substrate still open |
 | OQ-0049 | P1 | OPEN | Marginal vs conditional estimand — SESOI must be stated on the reported scale |
 | OQ-0050 | P1 | OPEN | Martingale is scoped to *homogeneous* agents — a theoretical hook for H1 |
 | OQ-0051 | **P0** | OPEN | **Capability matching may leave H(c) with no range** — H1 could be untestable as specified |
 | OQ-0052 | P1 | OPEN | D3 confounds architecture with post-training recipe; rename the rung |
+| OQ-0053 | P1 | OPEN | NVIDIA ToS forbids 'false, misleading' content — our method generates it by design |
 | OQ-0040 | P1 | **LARGELY DISSOLVED** | Apache-2.0/MIT pool has no acceptable-use restrictions; see MODEL-POOL.md §3 |
 | OQ-0041 | P0 | CLOSED (DR-0005) | Fork resolved: self-host small open weights on Modal |
 
@@ -1267,3 +1268,41 @@ may not carry what it claims. Zhang et al. is now the citation for that choice.
 3. Consider a cheap addition: a **same-base, different-post-training** cohort (e.g. two Qwen2.5
    checkpoints with different instruction tuning) as a D3′ rung. It would cost one extra served
    model and would separate lineage from recipe — potentially the most novel rung on the ladder.
+
+
+---
+
+## OQ-0053 — Does NVIDIA's "false, misleading or deceptive" clause cover our method?
+**Priority:** P1 · **Status:** OPEN · **Raised:** 2026-08-09 · **Source:** DR-0012
+
+NVIDIA API Trial ToS §4 prohibits User Content and Generated Content that is *"fraudulent,
+**false**, misleading or deceptive"*. **Our method generates false content by construction** —
+seeded agents are instructed to argue persuasively for a claim we know to be untrue.
+
+**The charitable reading**, which is probably right: clause (c) sits in a list alongside
+impersonation, defamation, obscenity and harassment. It is plainly aimed at deceiving *people*,
+not at the scientific study of false claims inside a closed simulation. Our falsehoods are
+absurd, verifiable statements about physics and arithmetic (`RELEASE-SCOPE-AND-DUAL-USE.md` §3),
+no human is deceived, nothing is published as true, and the purpose is to measure resistance.
+
+**The uncharitable reading**, which we cannot dismiss: the text says "false", our injected
+content is false, and an automated compliance system does not read intent.
+
+**Why this matters more than it might seem.** Apache-2.0 weights impose **no use restrictions at
+all** — that was an explicit reason for the `MODEL-POOL.md` selection, and for excluding Llama
+and Gemma. Moving to a hosted API reintroduces exactly the class of constraint that decision
+avoided. Note also that `OQ-0040` was marked "largely dissolved" *because* we had chosen
+Apache-2.0 self-hosting. That reasoning no longer holds for the NVIDIA path.
+
+**Actions, in order:**
+1. **Pilot proceeds.** `EXP-000` Part A is isolated-agent factual probing with **no injection at
+   all** — no seeded personas, no persuasion. Clause (c) is not engaged. Part B presents
+   counter-arguments to a single model; borderline, but still no deception of any person.
+2. **Before the confirmatory matrix**, either (a) obtain written clarification from NVIDIA that
+   adversarial-robustness research with synthetic false claims is permitted, or (b) run the
+   matrix on self-hosted open weights where no such clause exists.
+3. Record whichever path is taken, and state it in the paper's methods. A reviewer asking
+   "were you permitted to do this?" should find the answer already written.
+
+**Recommendation:** (b) if institutional compute materialises, because it is unambiguous and it
+also restores model persistence and full reproducibility. (a) as the fallback.
