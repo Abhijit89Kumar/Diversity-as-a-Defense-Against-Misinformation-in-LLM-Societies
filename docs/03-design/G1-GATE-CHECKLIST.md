@@ -82,10 +82,10 @@ which rows are blocked on money and which are not. **21 of 27 rows need no GPU a
 
 | # | Requirement | Evidence | Block | GPU | Status |
 |---|---|---|---|---|---|
-| C1 | 25–30 candidate facts curated across tiers | `fact-suite/candidates.json` — 31 items | ❌ | — | ☑ |
-| C2 | Fact-suite inclusion band preregistered **before** validation | `fact-suite/README.md` §2 — band fixed at [0.25, 0.85] | ❌ | — | ☑ |
+| C1 | 25–30 candidate facts curated across tiers | `fact-suite/candidates.json` — **45 items, stratified** | ❌ | — | ☑ |
+| C2 | Fact-suite inclusion rules preregistered **before** validation | `fact-suite/README.md` §2 v0.2 — two strata, fixed before data (`OQ-0054`) | ❌ | — | ☑ |
 | C3 | Facts validated against isolated accuracy; out-of-band items excluded by rule | `EXP-000` Part A — **launch-ready** | ❌ | 🖥️ | ☐ |
-| C4 | Candidate model pool confirmed served, licence-checked, and downloadable | `MODEL-POOL.md` — 4 families, Apache-2.0, ungated | ❌ | — | ☑ |
+| C4 | Candidate model pool confirmed served, licence-checked, and downloadable | `MODEL-POOL.md` v0.2 + `EXP-A04` — availability measured; **licences unchecked** | ❌ | — | ◐ |
 | C5 | Prompt templates versioned and **byte-identical across agents** | `src/llm_society_sim/prompts.py`; enforced by `CohortSpec` validation | ❌ | — | ☑ |
 
 > **C2 before C3, and the order is the point.** The inclusion band must be fixed before the

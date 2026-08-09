@@ -1,0 +1,362 @@
+{
+  "swept_utc": "2026-08-09T12:25:49Z",
+  "trials_per_model": 3,
+  "results": [
+    {
+      "provider": "nvidia",
+      "model_id": "meta/llama-3.1-8b-instruct",
+      "lineage": "Meta",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 3,
+      "reliability": 1.0,
+      "p50_ms": 484,
+      "completion_tokens": 3,
+      "leaked_reasoning": false,
+      "answers": [
+        true,
+        true,
+        true
+      ],
+      "errors": []
+    },
+    {
+      "provider": "nvidia",
+      "model_id": "nvidia/nemotron-mini-4b-instruct",
+      "lineage": "NVIDIA",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 3,
+      "reliability": 1.0,
+      "p50_ms": 313,
+      "completion_tokens": 1,
+      "leaked_reasoning": false,
+      "answers": [
+        true,
+        true,
+        true
+      ],
+      "errors": []
+    },
+    {
+      "provider": "nvidia",
+      "model_id": "nvidia/nvidia-nemotron-nano-9b-v2",
+      "lineage": "NVIDIA",
+      "reasoning_control": "no_think",
+      "trials": 3,
+      "n_ok": 3,
+      "reliability": 1.0,
+      "p50_ms": 364,
+      "completion_tokens": 3,
+      "leaked_reasoning": false,
+      "answers": [
+        true,
+        true,
+        true
+      ],
+      "errors": []
+    },
+    {
+      "provider": "nvidia",
+      "model_id": "nvidia/nemotron-3-nano-30b-a3b",
+      "lineage": "NVIDIA",
+      "reasoning_control": "no_think",
+      "trials": 3,
+      "n_ok": 3,
+      "reliability": 1.0,
+      "p50_ms": 434,
+      "completion_tokens": 16,
+      "leaked_reasoning": true,
+      "answers": [
+        null,
+        null,
+        null
+      ],
+      "errors": []
+    },
+    {
+      "provider": "nvidia",
+      "model_id": "openai/gpt-oss-20b",
+      "lineage": "OpenAI",
+      "reasoning_control": "effort_low",
+      "trials": 3,
+      "n_ok": 3,
+      "reliability": 1.0,
+      "p50_ms": 338,
+      "completion_tokens": 13,
+      "leaked_reasoning": true,
+      "answers": [
+        true,
+        true,
+        true
+      ],
+      "errors": []
+    },
+    {
+      "provider": "nvidia",
+      "model_id": "openai/gpt-oss-120b",
+      "lineage": "OpenAI",
+      "reasoning_control": "effort_low",
+      "trials": 3,
+      "n_ok": 0,
+      "reliability": 0.0,
+      "p50_ms": null,
+      "completion_tokens": null,
+      "leaked_reasoning": false,
+      "answers": [],
+      "errors": [
+        "TimeoutError"
+      ]
+    },
+    {
+      "provider": "nvidia",
+      "model_id": "mistralai/mistral-nemotron",
+      "lineage": "Mistral",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 0,
+      "reliability": 0.0,
+      "p50_ms": null,
+      "completion_tokens": null,
+      "leaked_reasoning": false,
+      "answers": [],
+      "errors": [
+        "TimeoutError",
+        "http_500"
+      ]
+    },
+    {
+      "provider": "nvidia",
+      "model_id": "meta/llama-3.1-70b-instruct",
+      "lineage": "Meta",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 3,
+      "reliability": 1.0,
+      "p50_ms": 41558,
+      "completion_tokens": 2,
+      "leaked_reasoning": false,
+      "answers": [
+        true,
+        true,
+        true
+      ],
+      "errors": []
+    },
+    {
+      "provider": "nvidia",
+      "model_id": "nvidia/llama-3.3-nemotron-super-49b-v1.5",
+      "lineage": "NVIDIA",
+      "reasoning_control": "no_think",
+      "trials": 3,
+      "n_ok": 3,
+      "reliability": 1.0,
+      "p50_ms": 433,
+      "completion_tokens": 2,
+      "leaked_reasoning": false,
+      "answers": [
+        true,
+        true,
+        true
+      ],
+      "errors": []
+    },
+    {
+      "provider": "nvidia",
+      "model_id": "minimaxai/minimax-m3",
+      "lineage": "MiniMax",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 1,
+      "reliability": 0.3333333333333333,
+      "p50_ms": 296,
+      "completion_tokens": 2,
+      "leaked_reasoning": false,
+      "answers": [
+        true
+      ],
+      "errors": [
+        "http_429"
+      ]
+    },
+    {
+      "provider": "gmi",
+      "model_id": "google/gemma-4-26b-a4b-it",
+      "lineage": "Google",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 2,
+      "reliability": 0.6666666666666666,
+      "p50_ms": 4301,
+      "completion_tokens": 2,
+      "leaked_reasoning": false,
+      "answers": [
+        true,
+        true
+      ],
+      "errors": [
+        "http_429"
+      ]
+    },
+    {
+      "provider": "gmi",
+      "model_id": "google/gemma-4-31b-it",
+      "lineage": "Google",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 0,
+      "reliability": 0.0,
+      "p50_ms": null,
+      "completion_tokens": null,
+      "leaked_reasoning": false,
+      "answers": [],
+      "errors": [
+        "TimeoutError"
+      ]
+    },
+    {
+      "provider": "gmi",
+      "model_id": "Qwen/Qwen3-Next-80B-A3B-Instruct",
+      "lineage": "Alibaba",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 3,
+      "reliability": 1.0,
+      "p50_ms": 1416,
+      "completion_tokens": 1,
+      "leaked_reasoning": false,
+      "answers": [
+        true,
+        true,
+        true
+      ],
+      "errors": []
+    },
+    {
+      "provider": "gmi",
+      "model_id": "Qwen/Qwen3.5-27B",
+      "lineage": "Alibaba",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 0,
+      "reliability": 0.0,
+      "p50_ms": null,
+      "completion_tokens": null,
+      "leaked_reasoning": false,
+      "answers": [],
+      "errors": [
+        "http_429"
+      ]
+    },
+    {
+      "provider": "gmi",
+      "model_id": "Qwen/Qwen3.6-35B-A3B",
+      "lineage": "Alibaba",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 0,
+      "reliability": 0.0,
+      "p50_ms": null,
+      "completion_tokens": null,
+      "leaked_reasoning": false,
+      "answers": [],
+      "errors": [
+        "http_429"
+      ]
+    },
+    {
+      "provider": "gmi",
+      "model_id": "MiniMaxAI/MiniMax-M3",
+      "lineage": "MiniMax",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 3,
+      "reliability": 1.0,
+      "p50_ms": 2558,
+      "completion_tokens": 16,
+      "leaked_reasoning": false,
+      "answers": [
+        null,
+        null,
+        null
+      ],
+      "errors": []
+    },
+    {
+      "provider": "gmi",
+      "model_id": "moonshotai/Kimi-K2.5",
+      "lineage": "Moonshot",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 3,
+      "reliability": 1.0,
+      "p50_ms": 2691,
+      "completion_tokens": 2,
+      "leaked_reasoning": false,
+      "answers": [
+        true,
+        true,
+        true
+      ],
+      "errors": []
+    },
+    {
+      "provider": "gmi",
+      "model_id": "deepseek-ai/DeepSeek-V3.2",
+      "lineage": "DeepSeek",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 3,
+      "reliability": 1.0,
+      "p50_ms": 2286,
+      "completion_tokens": 1,
+      "leaked_reasoning": false,
+      "answers": [
+        true,
+        true,
+        true
+      ],
+      "errors": []
+    },
+    {
+      "provider": "gmi",
+      "model_id": "zai-org/GLM-5.2-FP8",
+      "lineage": "Zhipu",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 3,
+      "reliability": 1.0,
+      "p50_ms": 2608,
+      "completion_tokens": 16,
+      "leaked_reasoning": true,
+      "answers": [
+        null,
+        null,
+        true
+      ],
+      "errors": []
+    },
+    {
+      "provider": "gmi",
+      "model_id": "XiaomiMiMo/MiMo-V2.5",
+      "lineage": "Xiaomi",
+      "reasoning_control": null,
+      "trials": 3,
+      "n_ok": 3,
+      "reliability": 1.0,
+      "p50_ms": 4241,
+      "completion_tokens": 16,
+      "leaked_reasoning": true,
+      "answers": [
+        null,
+        true,
+        true
+      ],
+      "errors": []
+    }
+  ],
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0"
+  }
+}

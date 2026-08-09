@@ -64,9 +64,9 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 | OQ-0050 | P1 | OPEN | Martingale is scoped to *homogeneous* agents — a theoretical hook for H1 |
 | OQ-0051 | **P0** | OPEN | **Capability matching may leave H(c) with no range** — H1 could be untestable as specified |
 | OQ-0052 | P1 | OPEN | D3 confounds architecture with post-training recipe; rename the rung |
-| OQ-0053 | P1 | OPEN | NVIDIA ToS forbids 'false, misleading' content — our method generates it by design |
+| OQ-0053 | P1 | OPEN | NVIDIA **and now GMI** ToS/AUP unchecked for misinformation clauses |
 | OQ-0054 | **P0** | OPEN | **Fact suite is at ceiling (0.92-1.00)** - one band cannot serve both hazards |
-| OQ-0055 | P1 | OPEN | MODEL-POOL unservable on both providers; pool must be rebuilt |
+| OQ-0055 | P1 | **PARTLY CLOSED (EXP-A04)** | Pool rebuilt from measured availability; GMI is the only provider with 4+ lineages |
 | OQ-0040 | P1 | **LARGELY DISSOLVED** | Apache-2.0/MIT pool has no acceptable-use restrictions; see MODEL-POOL.md §3 |
 | OQ-0041 | P0 | CLOSED (DR-0005) | Fork resolved: self-host small open weights on Modal |
 
