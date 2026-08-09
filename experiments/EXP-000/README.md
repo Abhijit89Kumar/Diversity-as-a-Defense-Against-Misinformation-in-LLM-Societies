@@ -128,6 +128,12 @@ and redesign**, not a limitation to note later:
 - Nuisance-factor variance ≥ injection-effect variance.
 - Behavioural-consistency discrepancy > 25%.
 
+**Diversity range (`OQ-0051`)** — H1 is estimable only if the capability-matched cohorts span
+a usable range of `H(c)`. Kim (`2607.20768`) reports this measure is collinear with
+`1 − mean accuracy` at ρ = 0.991, so matching accuracy may flatten `H` as well. **Criterion,
+fixed now: the matched ladder must span at least 0.15 in `H(c)`, or H1 is not estimable as
+specified and the design changes before the matrix runs.** Options in `OQ-0051`.
+
 **Gradedness** — classify each family as step / graded / mixed by fitting both a step and a
 logistic curve to its response profile and comparing by BIC. The classification rule is fixed
 here; the outcome is not anticipated.
@@ -141,6 +147,7 @@ here; the outcome is not anticipated.
 | `accuracy_by_model_fact.csv` | D1, C3, capability matching |
 | `retained_facts.json` + excluded items **with their measured accuracies** | C3 |
 | `diversity_by_cohort.csv` (`H(c)`, plus disagreement and Q-statistic companions) | D2 |
+| **`diversity_range.json` — realised spread of `H(c)` across the matched ladder** | **`OQ-0051`, blocking** |
 | `gradedness_curves.csv` + per-family classification | B6 |
 | `probe_reliability.csv` (paraphrase agreement, order sensitivity) | V1, V2 |
 | `cost_and_timing.json` (tokens/call, latency, GPU-hours, $) | E1 |

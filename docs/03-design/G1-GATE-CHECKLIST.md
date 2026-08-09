@@ -37,17 +37,27 @@ which rows are blocked on money and which are not. **21 of 27 rows need no GPU a
 
 | # | Requirement | Evidence | Block | GPU | Status |
 |---|---|---|---|---|---|
-| A1 | Prior-art review complete across all mandated channels | `PRIOR-ART-REVIEW.md`, `SEARCH-LOG.md` coverage checklist | ❌ | — | ◐ |
+| A1 | Prior-art review complete across all mandated channels | Round 4 sweep: **252 queries, 185 findings**, 10/12 channels; raw output archived | ❌ | — | ◐ |
 | A2 | Positioning statement written, ≤150 words, with the four evidence claims | `PRIOR-ART-REVIEW.md` → "Positioning statement v1.0 FINAL" | ❌ | — | ☑ |
 | A3 | Every Tier-A paper has a `LIT-xxxx` note with a threat rating | `docs/02-literature/notes/` | ❌ | — | ◐ (4 of ~12) |
 | A4 | Remaining unverified leads fetched or explicitly deferred | `OQ-0037`, `OQ-0047` | ⚠️ | — | ☐ |
 | A5 | Martingale result obtained and verified | `LIT-0003` — Choi, Zhu & Li 2508.17536; abstract verified, full text pending | ⚠️ | — | ◐ |
 
-> **A1 is not `☑` despite the review being substantial.** `SEARCH-LOG.md`'s channel checklist
-> has zero boxes ticked: OpenReview reviews, AAMAS/WWW/ICWSM/CSCW, and the mandatory forward-
-> and backward-citation traversals on each Tier-A paper have not been run. The sweeps were
-> broad but not systematic in the way SOP-020 §1 requires, and forward-citation search is
-> precisely how one finds the paper that already did your experiment.
+> **A1 — substantially advanced 2026-08-08, still not `☑`.** The Round 4 sweep covered ACL
+> Anthology, OpenReview (submissions *and* reviews), AAMAS/WWW/ICWSM/CSCW/JASSS and the
+> complex-systems venues, GitHub, all five arXiv categories, and forward-citation traversal on
+> four of six Tier-A papers — 252 queries, 185 findings, raw output archived at
+> `docs/02-literature/sweeps/`.
+>
+> **Why it stays `◐`:** forward-citation on NetSafe and Zhu et al. is outstanding; only the five
+> highest-threat findings were verified against primary sources (the sweep's own verification
+> phase never ran); and ten high-priority items remain unread, including **the OpenReview
+> reviewer text for Becker et al.** — the closest prior work — which is exactly the material
+> SOP-020 §1 wants OpenReview searched for.
+>
+> It found two things that changed the design: `OQ-0051` (our diversity measure may have no
+> range left after capability matching) and `OQ-0052` (D3 confounds architecture with
+> post-training recipe).
 
 ## B — Design and measurement
 

@@ -814,3 +814,149 @@ useful finding than a confirmation, and it is publishable on exactly the same de
 
 **Shelf life.** Becker et al. appeared eight weeks before this review; Nilayam et al. seven.
 Re-run the Tier-A sweep at G3 and again immediately before submission (SOP-020 §5).
+
+---
+
+# Round 4 — systematic channel sweep (G1 A1)
+
+**Sweep:** 2026-08-08. 9 channels, **252 distinct queries, 185 findings**. Raw agent output
+retained as search-log evidence at `sweeps/2026-08-08-G1-A1-raw.json`.
+
+**Coverage achieved:** ACL Anthology · GitHub / HuggingFace / code · computational-social-science
+and complex-systems venues (AAMAS, WWW, ICWSM, CSCW, JASSS, PRE, PNAS, Nature Hum. Behav.) ·
+arXiv cs.MA/CL/AI/SI/CY/CR/LG + physics.soc-ph · **OpenReview submissions and reviews** ·
+forward-citation traversal on Becker, Sela, Nilayam and Choi.
+
+**Not covered:** forward-citation on NetSafe and Zhu et al.; the adversarial-verification and
+synthesis phases did not run (the sweep was interrupted). The five highest-threat items were
+therefore verified by hand against arXiv abstract pages, below. **Everything else in the raw
+file is `[UNVERIFIED]`.**
+
+## The five verified
+
+### ⚠ `2607.20768` — Kim, *Are Diversity Metrics Measuring Diversity? A Capability-Controlled Audit of Majority-Vote Gain in LLM Ensembles* (22 Jul 2026)
+
+**The most consequential paper found in the entire review, and it is aimed squarely at our
+diversity measure.**
+
+> *"a joint-correctness proxy (**strict diversity**) is nearly collinear with **one minus mean
+> accuracy** (size-3 Spearman rho = **+0.991 / +0.988**); raw diversity–gain associations are
+> strongly capability-entangled and, with one exception, unstable under control."*
+
+> *"after capability control, the empirically stable remainder is a modest residual pairwise
+> co-failure association in which more shared error corresponds to lower gain."*
+
+31,900 subsets of 30 LLMs on MMLU-Pro and TruthfulQA, under explicit capability controls.
+
+**Two consequences, pulling in opposite directions.**
+
+*It validates our central methodological argument.* An independent group has now demonstrated,
+with a hard number, that diversity metrics are capability-entangled and that associations are
+unstable without control. That is exactly the flaw we identify in the four published
+heterogeneity results. We no longer have to argue the premise — we can cite it.
+
+*It also lands directly on `AMD-0001 §5`.* Our `H(c)` — error decorrelation over a correctness
+vector — **is** Kim's joint-correctness proxy. We flagged the accuracy-entanglement as a "known
+issue to handle, not hide"; Kim quantifies it at **ρ = 0.991**. That is not a caveat, it is
+near-identity. Recorded as `OQ-0051`.
+
+**What it does not touch:** independent majority voting over ensembles — no communication, no
+network, no rounds, no adversary, no cascade. Our experiment is untouched; our *measure* is not.
+
+### ⚠ `2606.20632` — Zhang, Wang, Xue & Chu, *Post-Training Recipe, More Than Model Family, Shapes Multi-Agent LLM Conversational Behavior* (30 May 2026)
+
+> *"a reasoning-distilled Llama checkpoint shifts by 18% depending on which **same-base** partner
+> it replies to, more than any **cross-family** hedging gap in the controlled subset."*
+
+> *"the results identify post-training recipe as a first-class axis… and show that **model family
+> alone is an incomplete proxy for conversational diversity**."*
+
+940,000-chain corpus across 11 checkpoints, plus a 1.6M-chain same-base Llama factorial.
+
+**This challenges what D3 means.** Our ladder treats "different model family" as *the*
+architectural rung. Zhang et al. show the family label is an incomplete proxy, and that a
+within-family post-training difference can exceed a cross-family one.
+
+It cuts both ways, mostly in our favour: it is a strong argument for **measuring** functional
+diversity rather than assuming a categorical family label carries it — which is what
+`AMD-0001 §5` already does. But D3 can no longer be described as isolating "architectural"
+diversity, because our four families differ in post-training recipe too. Recorded as `OQ-0052`.
+
+### `2607.27512` — Savcisens, Dies, Maynard & Eliassi-Rad, *Belief Coevolution in a Social Network of Generalist and Specialist LLMs* (29 Jul 2026)
+
+CoevolveSim: 1,280 controlled simulations, 4 scenarios, 2 network structures, 20 medical
+statements; agents observe a summary of neighbours' beliefs and revise.
+
+> *"persona-style role assignment and network structure reshape individual belief revision but
+> have **minimal effect on population-level consensus**."*
+> *"introducing (finetuned) specialist LLMs **more than doubles the shift in consensus**."*
+
+**The closest published design to ours** — networked LLM belief diffusion with a heterogeneity
+manipulation, from a serious network-science group. Threat 4/5.
+
+What it leaves open: **no adversarial injection** (belief diffusion, not misinformation
+resistance); heterogeneity is generalist/specialist fine-tuning rather than model family at
+matched capability; no cascade or survival treatment. Their null on network structure bears
+directly on H2 (already exploratory) and must be cited where H2 is stated.
+
+### `2608.03421` — Yan et al., *When Truth Is Distributed: Misinformation Derails Collective Fact Recovery in LLM-Based MAS* (**4 Aug 2026 — four days before this sweep**)
+
+> *"aggregate truth recovery falls from **72.50% to 14.17%**"*
+> *"a single false testimony is adopted more readily than truthful testimony, propagates to
+> higher orders, and **persists through honest agents after the deceiver exits**."*
+
+120 five-agent environments, **three homogeneous** systems, distributed-evidence task.
+
+A **gift for the irreversibility metric**: persistence after the deceiver exits is exactly what
+AMD-0002 §3's `irreversibility` and §2.2's recovery hazard were built to capture, and someone has
+now shown the phenomenon is real. Homogeneous-only, 5 agents, no topology, no capability control
+— so H1 is untouched.
+
+Its date is also the point: **published four days before we searched.** `RK-0015`'s "shelf life
+measured in weeks" is not a figure of speech.
+
+### `2604.27274` — Shehata & Li, *The Inverse-Wisdom Law: Architectural Tribalism and the Consensus Paradox in Agentic Swarms* (30 Apr 2026)
+
+> *"in kinship-dominant swarms, adding logical agents increases the stability of erroneous
+> trajectories rather than the probability of truth"* … *"we establish the **Heterogeneity
+> Mandate** as a foundational safety requirement for resilient agentic architectures."*
+
+36 experiments, 12,804 trajectories, GAIA / Multi-Challenge / SWE-bench, on frontier models
+(Gemini 3.1 Pro, Claude Sonnet 4.6, GPT-5.4).
+
+"Heterogeneity is a safety requirement" is therefore published, in strong terms. But: task
+benchmarks rather than injected misinformation, frontier models rather than a matched-capability
+small-model pool, no network topology, and — on the abstract — no capability control. A framing
+competitor, not an experimental one. **`[UNVERIFIED]` beyond the abstract.**
+
+## High-priority unread
+
+From the raw sweep, not yet fetched. Each could matter.
+
+| Identifier | Title | Why |
+|---|---|---|
+| `2606.00820` | *Not All Flips Are Conformity: Decomposing Stance Convergence in Multi-Agent LLMs* | Directly about decomposing what our capitulation measure counts |
+| `2608.02827` | *Emergence of Biased Consensus in Multi-Agent LLM Debates* | Surfaced by two independent citation traversals |
+| `2606.20493` | *Contagion Networks: Evaluator Preference Propagation in Multi-Agent LLM Systems* | Contagion framing on networks |
+| `2602.00428` | *When Agents "Misremember" Collectively: Mandela Effect in LLM-based…* | Collective false memory; has an OpenReview thread too |
+| `2509.05396` | *Talk Isn't Always Cheap: Failure Modes in Multi-Agent Debate* | This is `OQ-0047` — the weak-models competing explanation. Surfaced twice. |
+| `10.1038/s41598-026-42705-7` | *When collaboration fails: persuasion-driven adversarial influence…* | **Peer-reviewed** (Scientific Reports) |
+| `2511.14098` | *Collaborative QA using Interacting LLMs: Impact of Network Structure, Node Capability* | Network structure **and** node capability together |
+| OpenReview `N4Cq7phkDY` | Becker et al. reviews | **Actual reviewer criticism of the closest prior work** |
+| OpenReview `WZxgyxL6rw` | *Conformity Dynamics… A Network Topology Perspective* | Confirms the earlier unverified OpenReview lead |
+| GitHub `ContamPerc` | Contamination percolation in multi-agent LLM systems | An existing implementation to differentiate from |
+
+## Effect on the positioning statement
+
+The v1.0 statement rests on four claims. Round 4 revises two.
+
+- *"None holds capability fixed"* — still true **of the heterogeneity-in-multi-agent-systems
+  results**, but Kim (`2607.20768`) now does exactly this for **ensembles**. The claim must be
+  narrowed to interactive multi-agent settings, with Kim cited as the precedent that makes the
+  control credible rather than novel.
+- *"Diversity means model family"* — weakened by Zhang et al. (`2606.20632`). Better framing: we
+  *measure* functional diversity rather than assuming a family label carries it — and we now have
+  a citation for why that matters.
+
+The two load-bearing claims survive intact: **multi-round cascade dynamics remain unexamined**,
+and **truth diffusion is still never reported alongside error diffusion.**

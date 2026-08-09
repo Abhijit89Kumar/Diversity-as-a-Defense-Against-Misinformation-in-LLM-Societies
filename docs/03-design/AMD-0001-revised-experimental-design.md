@@ -99,8 +99,13 @@ The central design object. Five cohort types, each of N agents, **all matched on
 | **D0 — Identical** | N copies of model M, one persona, T = 0 | None (baseline) |
 | **D1 — Stochastic** | N copies of M, one persona, sampling temperature > 0 | Sampling noise only |
 | **D2 — Persona** | N copies of M, k distinct reasoning personas | Prompting |
-| **D3 — Architectural** | k distinct model families, accuracy-matched to D0 | Pretraining / architecture |
+| **D3 — Cross-lineage** | k distinct model families, accuracy-matched to D0 | Pretraining + post-training + architecture (confounded — `OQ-0052`) |
 | **D4 — Combined** | k families × k personas | Both |
+
+> **Renamed 2026-08-08.** D3 was "Architectural". Zhang et al. (`2606.20632`) show a
+> within-family post-training difference can exceed a cross-family one, so a family label
+> does not isolate architecture. "Cross-lineage" states what is actually manipulated
+> (`OQ-0052`).
 
 **Why the ladder is the contribution.** Every prior study compares one homogeneous
 configuration against one heterogeneous configuration. That design cannot distinguish
@@ -170,6 +175,21 @@ and confirm the ranking of cohorts is stable across measures. If the ranking is 
 that is reported.
 
 `H(c)` is computed and reported **for every cohort, before the matrix runs**.
+
+> ### Amended 2026-08-08 — `OQ-0051`, and it is serious
+>
+> Kim (`2607.20768`, Jul 2026) audits exactly this family of measures and reports that a
+> joint-correctness proxy — **which is what `H(c)` is** — is collinear with `1 − mean accuracy`
+> at **Spearman ρ = 0.991**.
+>
+> Mitigation (a) above says holding `ā` fixed "breaks that collinearity by construction".
+> That is true, and it has a consequence not followed through here: **if `H ≈ 1 − ā` and `ā`
+> is held fixed across the ladder, `H` is nearly fixed too — and a predictor with no variance
+> cannot test H1.**
+>
+> `EXP-000` must therefore report the **realised range of `H(c)` across the matched ladder**,
+> against a minimum-range criterion fixed in advance. If the range is inadequate, the design
+> changes before the matrix runs, not after. Options are enumerated in `OQ-0051`.
 
 ---
 

@@ -62,6 +62,8 @@ Status: `OPEN` · `IN PROGRESS` · `CLOSED (DR-xxxx)` · `DEFERRED`
 | OQ-0048 | P0 | OPEN | Modal credits expired — compute plan in DR-0005 is unfunded |
 | OQ-0049 | P1 | OPEN | Marginal vs conditional estimand — SESOI must be stated on the reported scale |
 | OQ-0050 | P1 | OPEN | Martingale is scoped to *homogeneous* agents — a theoretical hook for H1 |
+| OQ-0051 | **P0** | OPEN | **Capability matching may leave H(c) with no range** — H1 could be untestable as specified |
+| OQ-0052 | P1 | OPEN | D3 confounds architecture with post-training recipe; rename the rung |
 | OQ-0040 | P1 | **LARGELY DISSOLVED** | Apache-2.0/MIT pool has no acceptable-use restrictions; see MODEL-POOL.md §3 |
 | OQ-0041 | P0 | CLOSED (DR-0005) | Fork resolved: self-host small open weights on Modal |
 
@@ -1179,3 +1181,89 @@ populations.
 diversity of *candidate answers at initialisation*; ours is diversity of *who is answering*,
 at matched capability. A homogeneous population can be answer-diverse; an architecturally
 diverse one can be answer-homogeneous.
+
+
+---
+
+## OQ-0051 — Capability matching may leave H(c) with no range to test H1 with
+**Priority:** **P0** · **Status:** OPEN · **Raised:** 2026-08-08 · **Source:** `2607.20768` (Kim, Jul 2026)
+
+Kim audits five diversity measures against majority-vote gain across 31,900 subsets of 30 LLMs
+under explicit capability controls, and reports:
+
+> *"a joint-correctness proxy (**strict diversity**) is nearly collinear with **one minus mean
+> accuracy** (size-3 Spearman rho = **+0.991 / +0.988**)."*
+
+**Our `H(c)` is that measure.** `AMD-0001 §5` defines it as `1 − mean pairwise correlation of
+correctness vectors` — a joint-correctness proxy. We already flagged the entanglement as a
+"known issue to handle, not hide". Kim gives it a number, and ρ = 0.991 is not entanglement, it
+is near-identity.
+
+**The danger is not the one we anticipated, and it is worse.** Our stated mitigation was that
+holding `ā` fixed by design "breaks that collinearity by construction" (`AMD-0001 §4`). That
+reasoning is sound — but it has a consequence we did not follow through:
+
+> If `H(c) ≈ 1 − ā(c)` and we hold `ā(c)` fixed across the ladder, then **`H(c)` is also
+> nearly fixed across the ladder.** A predictor with no variance cannot explain anything, and
+> H1 — stated as a coefficient on `H(c)` — becomes untestable by construction.
+
+That is a design-invalidating possibility, discovered before any compute was spent rather than
+after. Kim's own result offers the escape: *"after capability control, the empirically stable
+remainder is a modest residual pairwise co-failure association"* — there **is** residual signal,
+but it is modest, and its magnitude is "configuration-dependent".
+
+**What must happen, in order:**
+
+1. **`EXP-000` must report the realised range of `H(c)` across the capability-matched ladder**,
+   not merely its value per cohort. This is a new required output and is cheap — it comes from
+   the same isolated-accuracy run.
+2. **A minimum-range criterion, fixed in advance.** If matched cohorts span less than a
+   preregistered range of `H`, H1 is not estimable as specified and the design must change
+   before the matrix runs.
+3. **Promote the chance-corrected companions from robustness check to candidates for primary.**
+   `AMD-0001 §5` already names pairwise disagreement and the Q-statistic. Kim's finding is the
+   argument for deciding between them on measured grounds rather than defaulting to error
+   decorrelation.
+4. **If the range is inadequate:** the honest alternatives are (a) relax exact matching and
+   adjust statistically instead, accepting a weaker causal claim; (b) construct cohorts to
+   maximise `H` spread *at* matched `ā`, which is a search problem over the model pool; or
+   (c) restate H1 over the categorical ladder rung rather than continuous `H`, losing the
+   continuous-relationship claim that makes the paper interesting.
+
+**The silver lining, and it is real.** Kim independently establishes the premise this project
+rests on — that diversity metrics are capability-entangled and diversity–outcome associations
+are unstable without control. We no longer have to argue it; we cite it. What we lose is the
+claim to be first to notice.
+
+---
+
+## OQ-0052 — "Architectural" diversity is not what the D3 label says it is
+**Priority:** P1 · **Status:** OPEN · **Raised:** 2026-08-08 · **Source:** `2606.20632` (Zhang et al., May 2026)
+
+Zhang, Wang, Xue & Chu study a 940,000-chain corpus across 11 checkpoints plus a 1.6M-chain
+same-base Llama factorial, and report:
+
+> *"a reasoning-distilled Llama checkpoint shifts by 18% depending on which **same-base**
+> partner it replies to, more than any **cross-family** hedging gap in the controlled subset."*
+> *"model family alone is an incomplete proxy for conversational diversity."*
+
+**Consequence for the ladder.** `D3` is described in `AMD-0001 §3` as isolating *architectural*
+decorrelation, operationalised as "different model families". Our four families —
+Qwen2.5-7B, Mistral-7B-v0.3, OLMo-2-7B, Granite-3.3-8B — differ in pretraining data **and**
+post-training recipe **and** architecture, simultaneously. We cannot attribute a D3 effect to
+architecture, and should stop implying we can.
+
+**This mostly supports our design rather than threatening it.** The whole reason `AMD-0001 §5`
+*measures* functional diversity instead of trusting a categorical family label is that the label
+may not carry what it claims. Zhang et al. is now the citation for that choice.
+
+**Actions:**
+1. **Rename the rung.** "D3 — architectural" becomes **"D3 — cross-lineage"**, or simply
+   "different model provenance", in AMD-0001, the config, and the paper. The claim then matches
+   what is manipulated.
+2. State plainly in Limitations that pretraining, post-training and architecture are confounded
+   within D3, and that separating them would require same-base checkpoints — which is exactly
+   the experiment Zhang et al. ran, and a clean piece of Future Work.
+3. Consider a cheap addition: a **same-base, different-post-training** cohort (e.g. two Qwen2.5
+   checkpoints with different instruction tuning) as a D3′ rung. It would cost one extra served
+   model and would separate lineage from recipe — potentially the most novel rung on the ladder.
